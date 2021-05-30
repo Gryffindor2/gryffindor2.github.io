@@ -21,7 +21,7 @@ jobs:
              python -m pip install --upgrade pip
              pip install requests
              pip install beautifulsoup4
-             python user.py
+             python ./user.py
       # 使用现成的发送邮箱的GitHub action来发送邮件
       - name: 'Send mail'
         uses: dawidd6/action-send-mail@master
