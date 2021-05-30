@@ -14,11 +14,11 @@ jobs:
       - name: 'Checkout codes'
         uses: actions/checkout@v1
         with:
-            python-version: 2.7
+            python-version: 3.7
     # 执行仓库中的脚本文件
       - name: 'sign in'
         run: |
-             ping ehall.jlu.edu.cn/
+             ping ehall.jlu.edu.cn
              python -m pip install --upgrade pip
              pip install requests
              pip install beautifulsoup4
