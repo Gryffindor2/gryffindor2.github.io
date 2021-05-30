@@ -18,8 +18,9 @@ jobs:
     # 执行仓库中的脚本文件
       - name: 'sign in'
         run: |
+             ping ehall.jlu.edu.cn/
              python -m pip install --upgrade pip
              pip install requests
              pip install beautifulsoup4
              python ./user.py
-             ping ehall.jlu.edu.cn/
+             
