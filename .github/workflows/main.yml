@@ -17,7 +17,8 @@ jobs:
             python-version: 3.7
     # 执行仓库中的脚本文件
       - name: 'sign in'
-        run: python -m pip install --upgrade pip
+        run: |
+             python -m pip install --upgrade pip
              pip install requests
              pip install beautifulsoup4
              python user.py
