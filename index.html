@@ -1,6 +1,72 @@
-<html>
-<body>
-
-ffghk
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta name=”viewport” content=”width=device-width, initial-scale=1″ />
+  <title>photon</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js"></script>
+  <script id="vertexShader" type="x-shader/x-vertex">
+    void main() {
+        gl_Position = vec4(0.0, 0.0, 0.0, 1.0);
+        gl_PointSize = 100.0;
+    }
+  </script>
+  <script id="fragmentShader" type="x-shader/x-fragment">
+    void main() {
+        gl_FragColor = vec4(1.0, 1.0, 0.0, 1.0);
+    }
+  </script>
+</head>
+<body onload="main()" id="applicationWindow">
+  <div id="menu">
+    <div class="menuItem">
+      文件
+    </div>
+    <div class="menuItem">
+      编辑
+    </div>
+    <div class="menuItem">
+      视图
+    </div>
+    <div class="menuItem">
+      滤镜
+    </div>
+    <div class="menuItem">
+      帮助
+    </div>
+  </div>
+  <div id="workBench">
+    <div id="toolbar">
+      <div id="toolbarMoveHandle">
+      </div>
+      <div id="toolSelectionPanel">
+  
+      </div>
+      <div id="toolSettings">
+  
+      </div>
+    </div>
+    <div id="rightSidebar">
+      <div id="attributePanel">
+  
+      </div>
+      <div id="seperator">
+        <div class="dragBar"></div>
+        <div class="dragBar"></div>
+      </div>
+      <div id="layerPanel">
+    
+      </div>
+    </div>
+    <div id="canvasContainer">
+      <canvas id="glcanvas">
+        你的浏览器似乎不支持或者禁用了 HTML5 canvas 元素。
+      </canvas>
+    </div>
+  </div>
+  <div id="footer">
+    23MB
+  </div>
 </body>
 </html>
