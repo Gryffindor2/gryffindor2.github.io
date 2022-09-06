@@ -5,6 +5,7 @@ function main() {
         alert("无法初始化 WebGL,你的浏览器、操作系统或硬件等可能不支持 WebGL。");
         return;
     }
+    resize()
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT);
     const vsSource = document.getElementById('vertexShader').innerText;
@@ -32,8 +33,10 @@ function main() {
 			canvasContainer.style.cursor='default';
         }
 	})
+  document.getElementById("resizableContainer").style.width = '300px';
     enableDrag(document.getElementById("toolbar"), document.getElementById("toolbarMoveHandle"))
-	enableResizeVertical(document.getElementById("attributePanel"),document.getElementById("layerPanel"),document.getElementById("seperator"))
+    enableResizeVertical(attributePanel, layerPanel, seperator);
+    enableResizeHorizontal(null,document.getElementById("resizableContainer"),document.getElementById("horizontalSperator"))
 }
 function initShaders(gl,vsSource,fsSource){
   //创建程序对象
@@ -53,7 +56,12 @@ function initShaders(gl,vsSource,fsSource){
   gl.program = program;
   return true;
 }
+function resize(){
+  var totalHeight = document.body.clientHeight -70;
+  var attributePanel = document.getElementById("attributePanel");
+  attributePanel.style.height = totalHeight * .49 + 'px';
 
+}
 function loadShader(gl, type, source) {
   //根据着色类型，建立着色器对象
   const shader = gl.createShader(type);
@@ -68,7 +76,71 @@ function endisableDrag(handle)
 {
 	handle.onmousedown = null;
 }
+function enableResizeVertical(top,bottom,handle){
+  var originY = 0, deltaY = 0;
+  handle.onmousedown = dragMouseDown;
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // 在启动时获取鼠标光标位置:
+    originY = e.clientY;
+    document.onmouseup = closeDragElement;
+    // 每当光标移动时调用一个函数:
+    document.onmousemove = elementDrag;
+  }
 
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // 计算新的光标位置:
+    deltaY = originY - e.clientY;
+    originY = e.clientY;
+    // 设置元素的新位置:
+    if(top!=null)
+      top.style.height = (Number(top.style.height.slice(0, -2)) - deltaY) + 'px';
+    if(bottom!=null)
+      bottom.style.height = (Number(bottom.style.height.slice(0, -2)) + deltaY) + 'px';
+  }
+
+  function closeDragElement() {
+    // 释放鼠标按钮时停止移动:
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+function enableResizeHorizontal(left,right,handle)
+{
+  var originX = 0, deltaX = 0;
+  handle.onmousedown = dragMouseDown;
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // 在启动时获取鼠标光标位置:
+    originX = e.clientX;
+    document.onmouseup = closeDragElement;
+    // 每当光标移动时调用一个函数:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // 计算新的光标位置:
+    deltaX = originX - e.clientX;
+    originX = e.clientX;
+    // 设置元素的新位置:
+    if(left!=null)
+      left.style.width = (Number(left.style.width.slice(0, -2)) - deltaX) + 'px';
+    if(right!=null)
+      right.style.width = (Number(right.style.width.slice(0, -2)) + deltaX) + 'px';
+  }
+
+  function closeDragElement() {
+    // 释放鼠标按钮时停止移动:
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
 function enableDrag(elmnt,handle) {
   //elemnt is the object to move
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;

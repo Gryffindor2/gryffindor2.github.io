@@ -18,25 +18,25 @@
     }
   </script>
 </head>
-<body onload="main()" id="applicationWindow">
-  <div id="menu">
-    <div class="menuItem">
-      文件
+<body onload="main()" onresize="resize()">
+  <div id = "applicationWindow">
+    <div id="menu">
+      <div class="menuItem">
+        文件
+      </div>
+      <div class="menuItem">
+        编辑
+      </div>
+      <div class="menuItem">
+        视图
+      </div>
+      <div class="menuItem">
+        滤镜
+      </div>
+      <div class="menuItem">
+        帮助
+      </div>
     </div>
-    <div class="menuItem">
-      编辑
-    </div>
-    <div class="menuItem">
-      视图
-    </div>
-    <div class="menuItem">
-      滤镜
-    </div>
-    <div class="menuItem">
-      帮助
-    </div>
-  </div>
-  <div id="workBench">
     <div id="toolbar">
       <div id="toolbarMoveHandle">
       </div>
@@ -47,26 +47,32 @@
   
       </div>
     </div>
-    <div id="rightSidebar">
-      <div id="attributePanel">
-  
-      </div>
-      <div id="seperator">
-        <div class="dragBar"></div>
-        <div class="dragBar"></div>
-      </div>
-      <div id="layerPanel">
-    
-      </div>
-    </div>
     <div id="canvasContainer">
       <canvas id="glcanvas">
         你的浏览器似乎不支持或者禁用了 HTML5 canvas 元素。
       </canvas>
     </div>
+    <div id="resizableContainer">
+        <div id="horizontalSperator"></div>
+        <div id="rightSidebar">
+          <div id="attributePanel" class="panel">
+      
+          </div>
+          <div id="seperator">
+            <div class="dragBar"></div>
+            <div class="dragBar"></div>
+          </div>
+          <div id="layerPanel" class="panel">
+        
+          </div>
+        </div>
+    </div>
+      
+  
+    <div id="footer">
+      23MB
+    </div>
   </div>
-  <div id="footer">
-    23MB
-  </div>
+
 </body>
 </html>
