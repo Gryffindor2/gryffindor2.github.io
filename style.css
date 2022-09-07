@@ -1,12 +1,8 @@
 #canvasContainer{
   position: absolute;
   z-index: 0;
-  top: 50px;
-  left: 220px;
 }
 #toolbar{
-  top:50px;
-  left:10px;
   position: absolute;
   background-color: lightgray;
   z-index: 1;
@@ -15,8 +11,8 @@
   border-radius: 7px;
 }
 #glcanvas{
-  height: 600px;
-  width: 1000px;
+  height: 400px;
+  width: 400px;
 }
 #toolbarMoveHandle{
   height: 10px;
@@ -28,30 +24,33 @@
   border-radius: 5px;
 }
 #menu{
-  position: fixed;
-  height: 40px;
-  background-color: rgb(240, 240, 240);
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  background-color: #e8e8e8;
   width: 100%;
   margin: 0px;
-  padding-left: 3px;
   z-index: 3;
 }
 #applicationWindow{
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: stretch;
 }
 .menuItem{
   margin-top: 5px;
-  margin-bottom: auto;
+  margin-bottom: 5px;
   padding-right: 5px;
   padding-left: 5px;
+  box-sizing: border-box;
   border-radius: 5px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  float: left;
+  height: 30px;
+  line-height: 30px;
 }
-.menuItem:hover{
-  background-color: rgb(200, 200, 200);
+.unselectable{
+  user-select: none;
 }
 #rightSidebar{
   display: flex;
@@ -60,7 +59,6 @@
   flex: 1;
 }
 #footer{
-  position: fixed;
   bottom: 0;
   margin: 0px;
   background-color: rgb(240, 240, 240);
@@ -105,11 +103,59 @@ html,body{
   margin: 0px;
 }
 #resizableContainer{
-  position: fixed;
   display: flex;
   flex-flow: row;
-  height: calc(100% - 70px);
-  right: 0px;
+  height: 100%;
   top: 40px;
+  right: 0px;
   z-index: 2;
+}
+.subMenu{
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  background-color: #e8e8e8;
+  border-radius: 7px;
+  margin: 0px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 3px;
+  padding-left: 0px;
+  padding-right: 0px;
+  width: 120px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+.subMenuItem{
+  height: 35px;
+  line-height: 35px;
+}
+.subMenuItem:hover{
+  background-color: #d7d7d7;
+}
+#workbench{
+  flex: 1;
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+}
+#left{
+  position: relative;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+::-webkit-scrollbar {
+  height: 5px;
+  width : 5px;  
+}
+::-webkit-scrollbar-thumb {
+/*滚动条里面小方块*/
+border-radius   : 5px;
+background-color: #929292;
+}
+::-webkit-scrollbar-track {
+/*滚动条里面轨道*/
+background   : #ff000000;
+border-radius: 2.5px;
 }

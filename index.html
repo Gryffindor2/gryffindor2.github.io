@@ -21,38 +21,58 @@
 <body onload="main()" onresize="resize()">
   <div id = "applicationWindow">
     <div id="menu">
-      <div class="menuItem">
+      <div class="menuItem unselectable" id="fileMenu">
         文件
       </div>
-      <div class="menuItem">
+      <div class="subMenu unselectable" id="fileSubmenu">
+        <div class="subMenuItem">
+          打开
+        </div>
+        <div class="subMenuItem">
+          保存
+        </div>
+        <div class="subMenuItem">
+          导出
+        </div>
+        <div class="subMenuItem">
+          关闭
+        </div>
+      </div>
+      <div class="menuItem unselectable" id="editMenu">
         编辑
       </div>
-      <div class="menuItem">
+      <div class="menuItem unselectable" id="viewMenu">
         视图
       </div>
-      <div class="menuItem">
+      <div class="menuItem unselectable" id="filterMenu">
         滤镜
       </div>
-      <div class="menuItem">
+      <div class="menuItem unselectable" id="helpMenu">
         帮助
       </div>
     </div>
-    <div id="toolbar">
-      <div id="toolbarMoveHandle">
+    <div id="workbench">
+      <div id="left">
+        <div id="canvasContainer">
+          <canvas id="glcanvas">
+            你的浏览器似乎不支持或者禁用了 HTML5 canvas 元素。
+          </canvas>
+        </div>
+        <div id="toolbar">
+
+          <div id="toolbarMoveHandle">
+          </div>
+          <div id="toolSelectionPanel">
+      
+          </div>
+          <div id="toolSettings">
+      
+          </div>
+        </div>
+
+
       </div>
-      <div id="toolSelectionPanel">
-  
-      </div>
-      <div id="toolSettings">
-  
-      </div>
-    </div>
-    <div id="canvasContainer">
-      <canvas id="glcanvas">
-        你的浏览器似乎不支持或者禁用了 HTML5 canvas 元素。
-      </canvas>
-    </div>
-    <div id="resizableContainer">
+      <div id="resizableContainer">
         <div id="horizontalSperator"></div>
         <div id="rightSidebar">
           <div id="attributePanel" class="panel">
@@ -67,8 +87,9 @@
           </div>
         </div>
     </div>
-      
-  
+
+
+    </div>
     <div id="footer">
       23MB
     </div>

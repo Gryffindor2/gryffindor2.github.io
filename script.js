@@ -21,6 +21,8 @@ function main() {
     gl.drawArrays(gl.POINTS, 0, 1);
 
     var canvasContainer = document.getElementById("canvasContainer");
+    canvasContainer.style.top = '10px';
+    canvasContainer.style.left = '220px';
     document.addEventListener('keydown',event => {
         if (event.code === 'Space') {
 			enableDrag(canvasContainer, canvasContainer);
@@ -34,9 +36,34 @@ function main() {
         }
 	})
   document.getElementById("resizableContainer").style.width = '300px';
-    enableDrag(document.getElementById("toolbar"), document.getElementById("toolbarMoveHandle"))
+  var toolbar = document.getElementById("toolbar");
+  toolbar.style.top = '10px';
+  toolbar.style.left = '10px';
+    enableDrag(toolbar, document.getElementById("toolbarMoveHandle"))
     enableResizeVertical(attributePanel, layerPanel, seperator);
     enableResizeHorizontal(null,document.getElementById("resizableContainer"),document.getElementById("horizontalSperator"))
+  makeMenuFromTemplete(
+                    [
+                      {exe:event=>{alert(event.target)},
+                      subMenu:document.getElementById("fileSubmenu"),
+                      elemnt:document.getElementById("fileMenu")},
+                      
+                      {exe:event=>{alert(event.target)},
+                      subMenu:null,
+                      elemnt:document.getElementById("editMenu")},
+
+                      {exe:event=>{alert(event.target)},
+                      subMenu:null,
+                      elemnt:document.getElementById("viewMenu")},
+
+                      {exe:event=>{alert(event.target)},
+                      subMenu:null,
+                      elemnt:document.getElementById("filterMenu")},
+
+                      {exe:event=>{alert(event.target)},
+                      subMenu:null,
+                      elemnt:document.getElementById("helpMenu")}
+                    ])
 }
 function initShaders(gl,vsSource,fsSource){
   //创建程序对象
@@ -71,6 +98,27 @@ function loadShader(gl, type, source) {
   gl.compileShader(shader);
   //返回着色器对象
   return shader;
+}
+function makeMenuFromTemplete(menuArray)
+{
+  for(i=0;i<menuArray.length;i++){
+    var menuItem=menuArray[i].elemnt;
+    if(menuArray[i].subMenu == null){
+      menuItem.addEventListener('click', menuArray[i].exe);
+    }
+    else{
+      menuItem.addEventListener('click', ()=>{
+        alert("子菜单");
+        
+      });
+    }
+    menuItem.addEventListener('mouseover',event=>{
+      event.target.style.backgroundColor='#d7d7d7';
+    });
+    menuItem.addEventListener('mouseout',event=>{
+      event.target.style.backgroundColor='#e8e8e8';
+    });
+  }
 }
 function endisableDrag(handle)
 {
@@ -165,8 +213,8 @@ function enableDrag(elmnt,handle) {
       pos3 = e.clientX;
       pos4 = e.clientY;
       // 设置元素的新位置:
-      elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-      elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+      elmnt.style.top = (Number(elmnt.style.top.slice(0, -2)) - pos2) + "px";
+      elmnt.style.left = (Number(elmnt.style.left.slice(0, -2)) - pos1) + "px";
     }
   
     function closeDragElement() {
