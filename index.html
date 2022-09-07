@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <meta name=”viewport” content=”width=device-width, initial-scale=1″ />
   <title>photon</title>
-  <link rel="stylesheet" href="./style.css">
-  <script src="./script.js"></script>
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/main.js"></script>
+  <script src="./js/ui/menu.js"></script>
+  <script src="./js/ui/layout.js"></script>
+
   <script id="vertexShader" type="x-shader/x-vertex">
     void main() {
         gl_Position = vec4(0.0, 0.0, 0.0, 1.0);
@@ -21,11 +24,14 @@
 <body onload="main()" onresize="resize()">
   <div id = "applicationWindow">
     <div id="menu">
+      <div id="logo">
+        logo
+      </div>
       <div class="menuItem unselectable" id="fileMenu">
         文件
       </div>
-      <div class="subMenu unselectable" id="fileSubmenu">
-        <div class="subMenuItem">
+      <div class="subMenu unselectable" id="fileSubMenu">
+        <div class="subMenuItem" id="openSubMenu">
           打开
         </div>
         <div class="subMenuItem">
@@ -41,14 +47,37 @@
       <div class="menuItem unselectable" id="editMenu">
         编辑
       </div>
+      <div class="subMenu unselectable" id="editSubMenu">
+        <div class="subMenuItem">
+          复制
+        </div>
+        <div class="subMenuItem">
+          粘贴
+        </div>
+      </div>
       <div class="menuItem unselectable" id="viewMenu">
         视图
+      </div>
+      <div class="subMenu unselectable" id="viewSubMenu">
+        <div class="subMenuItem">
+          重置
+        </div>
       </div>
       <div class="menuItem unselectable" id="filterMenu">
         滤镜
       </div>
+      <div class="subMenu unselectable" id="filterSubMenu">
+        <div class="subMenuItem">
+          ...
+        </div>
+      </div>
       <div class="menuItem unselectable" id="helpMenu">
         帮助
+      </div>
+      <div class="subMenu unselectable" id="helpSubMenu">
+        <div class="subMenuItem">
+          帮助文档
+        </div>
       </div>
     </div>
     <div id="workbench">
