@@ -42,8 +42,7 @@ function main() {
     enableDrag(toolbar, document.getElementById("toolbarMoveHandle"))
     enableResizeVertical(attributePanel, layerPanel, seperator);
     enableResizeHorizontal(null,document.getElementById("resizableContainer"),document.getElementById("horizontalSperator"))
-  makeMenuFromTemplete([
-                        {exe:null,
+  makeMenuFromTemplete([{exe:null,
                         subMenu:document.getElementById("fileSubMenu"),
                         elemnt:document.getElementById("fileMenu"),},
 
@@ -63,6 +62,57 @@ function main() {
                         subMenu:document.getElementById("helpSubMenu"),
                         elemnt:document.getElementById("helpMenu")}
                       ],0)
+  //二级菜单
+  makeMenuFromTemplete([{exe:info,
+                          subMenu:null,
+                          elemnt:document.getElementById("openMenu")},
+                        
+                        {exe:info,
+                        subMenu:null,
+                        elemnt:document.getElementById('closeMenu')},
+                        
+                        {exe:info,
+                        subMenu:null,
+                        elemnt:document.getElementById('exportMenu')},
+                      
+                        {exe:info,
+                        subMenu:null,
+                        elemnt:document.getElementById('saveMenu')},
+
+                        {exe:info,
+                        subMenu:null,
+                        elemnt:document.getElementById('copyMenu')},
+
+                        {exe:info,
+                        subMenu:null,
+                        elemnt:document.getElementById('pasteMenu')},
+                        
+                        {exe:null,
+                        subMenu:document.getElementById("newSubMenu"),
+                        elemnt:document.getElementById('newMenu')},
+                      
+                        {exe:()=>{    
+                          canvasContainer.style.top = '10px';
+                          canvasContainer.style.left = '220px';
+                          toolbar.style.top = '10px';
+                          toolbar.style.left = '10px';
+                        },
+                        subMenu:null,
+                        elemnt:document.getElementById('resetMenu')},
+                      
+                        {exe:info,
+                        subMenu:null,
+                        elemnt:document.getElementById('moreFilterMenu')},
+
+                        {exe:info,
+                        subMenu:null,
+                        elemnt:document.getElementById('helpDocumentMenu')}
+                        ],1)
+  //三级菜单
+  makeMenuFromTemplete([{exe:info,subMenu:null,elemnt:document.getElementById('layerMenu')}],2)
+}
+function info(){
+  alert("info")
 }
 function initShaders(gl,vsSource,fsSource){
   //创建程序对象

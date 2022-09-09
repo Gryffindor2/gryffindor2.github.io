@@ -121,6 +121,8 @@ html,body{
   max-height: 80vh;
   overflow-y: auto;
   display: none;
+  border-color: #c0c0c0;
+  border-style: solid;
 }
 .subMenuItem{
   height: 35px;
@@ -163,4 +165,5 @@ border-radius: 2.5px;
   width: 30px;
   line-height: 30px;
   vertical-align: middle;
+  background-color: aquamarine;
 }

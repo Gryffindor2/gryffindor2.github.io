@@ -24,23 +24,23 @@
 <body onload="main()" onresize="resize()">
   <div id = "applicationWindow">
     <div id="menu">
-      <div id="logo">
+      <div id="logo" class="unselectable">
         logo
       </div>
       <div class="menuItem unselectable" id="fileMenu">
         文件
       </div>
       <div class="subMenu unselectable" id="fileSubMenu">
-        <div class="subMenuItem" id="openSubMenu">
+        <div class="subMenuItem" id="openMenu">
           打开
         </div>
-        <div class="subMenuItem">
+        <div class="subMenuItem" id="saveMenu">
           保存
         </div>
-        <div class="subMenuItem">
+        <div class="subMenuItem" id="exportMenu">
           导出
         </div>
-        <div class="subMenuItem">
+        <div class="subMenuItem" id="closeMenu">
           关闭
         </div>
       </div>
@@ -48,18 +48,27 @@
         编辑
       </div>
       <div class="subMenu unselectable" id="editSubMenu">
-        <div class="subMenuItem">
+        <div class="subMenuItem" id="copyMenu">
           复制
         </div>
-        <div class="subMenuItem">
+        <div class="subMenuItem" id="pasteMenu">
           粘贴
+        </div>
+        <div class="subMenuItem" id="newMenu">
+          新建&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>
+        </div>
+
+      </div>
+      <div class="subMenu unselectable" id="newSubMenu">
+        <div class="subMenuItem" id="layerMenu">
+          图层
         </div>
       </div>
       <div class="menuItem unselectable" id="viewMenu">
         视图
       </div>
       <div class="subMenu unselectable" id="viewSubMenu">
-        <div class="subMenuItem">
+        <div class="subMenuItem" id="resetMenu">
           重置
         </div>
       </div>
@@ -67,7 +76,7 @@
         滤镜
       </div>
       <div class="subMenu unselectable" id="filterSubMenu">
-        <div class="subMenuItem">
+        <div class="subMenuItem" id="moreFilterMenu">
           ...
         </div>
       </div>
@@ -75,7 +84,7 @@
         帮助
       </div>
       <div class="subMenu unselectable" id="helpSubMenu">
-        <div class="subMenuItem">
+        <div class="subMenuItem" id="helpDocumentMenu">
           帮助文档
         </div>
       </div>

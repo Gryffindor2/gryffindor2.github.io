@@ -1,11 +1,28 @@
-var path = new Array(3);
-var menuActivated = false;
+var menu$path = new Array(3);
+var menu$menuActivated = false;
+var menu$totalMenuArray =[];
+var menu$maxLevel;
 function makeMenuFromTemplete(menuArray, level)
 {
+  menu$totalMenuArray = menu$totalMenuArray.concat(menuArray);
   for(i=0;i<menuArray.length;i++){
     var menuItem=menuArray[i].elemnt;
     if(menuArray[i].subMenu == null){
       menuItem.addEventListener('click', menuArray[i].exe);
+      menuItem.addEventListener('click', ()=>{
+        menu$menuActivated=false;
+        for(k=0;k<=2;k++){
+          if(menu$path[k]!=null){
+            var sub = getSubmenu(menu$path[k]);
+            menu$path[k].style.backgroundColor='#e8e8e8';
+            if(sub!=null){
+              sub.style.display='none';
+            }
+          }else{
+            break;
+          }
+        }
+      });
     }
     else{
       menuItem.addEventListener('click', event=>{
@@ -13,54 +30,69 @@ function makeMenuFromTemplete(menuArray, level)
         if(mis.style.display != 'block'){
           mis.style.display = 'block';
           mis.style.left = event.target.offsetLeft+'px';
-          menuActivated = true;
-          path[level] =  event.target;
+          mis.style.top = event.target.offsetTop + event.target.offsetHeight +1 +'px';
+          menu$menuActivated = true;
+          menu$path[level] =  event.target;
+          menu$maxLevel=level;
         }
         else{
           mis.style.display = 'none';
-          menuActivated = false;
-          path[level] =  null;
+          if(level == 0){
+            menu$menuActivated = false;
+            menu$path[level] =  null;
+          }
         }
       });
     }
     menuItem.addEventListener('mouseover',event=>{
-      if(menuActivated == true)
+      if(menu$menuActivated == true)
       {
-        if(path[level]!=event.target && path[level]!=null){
+        
+        if(menu$path[level]!=event.target && menu$path[level]!=null){
+          menu$maxLevel=level;
           for(k=level;k<=2;k++){
-            if(path[k]!=null){
-              var sub = getSubmenu(path[k]);
-              path[k].style.backgroundColor='#e8e8e8';
+            if(menu$path[k]!=null){
+              var sub = getSubmenu(menu$path[k]);
+              menu$path[k].style.backgroundColor='#e8e8e8';
               if(sub!=null){
                 sub.style.display='none';
               }
             }else{
+              
               break;
+              
             }
           }
         }
-        path[level] =  event.target;
-        if(getSubmenu(path[level])!=null){
-          var mis = getSubmenu(path[level])
+        menu$path[level] =  event.target;
+        if(getSubmenu(menu$path[level])!=null){
+          var mis = getSubmenu(menu$path[level])
+          menu$maxLevel=1+level;
           mis.style.display = 'block';
-          mis.style.left = event.target.offsetLeft+'px';
+          if(level == 0){
+            mis.style.left = event.target.offsetLeft+'px';
+            mis.style.top = event.target.offsetTop + event.target.offsetHeight +1 +'px';
+          }
+          else{
+            mis.style.left = event.target.parentNode.offsetLeft + event.target.offsetLeft + event.target.offsetWidth +  1 +'px';
+            mis.style.top = event.target.parentNode.offsetTop + event.target.offsetTop - 7 + 'px';
+          }
         }
       }
       event.target.style.backgroundColor='#d7d7d7';
     });
     menuItem.addEventListener('mouseout',event=>{
-      if(menuActivated == false)
-      {
+      if(menu$menuActivated == false || event.target == menu$path[menu$maxLevel]){
         event.target.style.backgroundColor='#e8e8e8';
       }
     });
   }
   document.getElementById("workbench").addEventListener('click',()=>{
-    menuActivated=false;
+    menu$menuActivated=false;
     for(k=level;k<=2;k++){
-      if(path[k]!=null){
-        var sub = getSubmenu(path[k]);
-        path[k].style.backgroundColor='#e8e8e8';
+      if(menu$path[k]!=null){
+        var sub = getSubmenu(menu$path[k]);
+        menu$path[k].style.backgroundColor='#e8e8e8';
         if(sub!=null){
           sub.style.display='none';
         }
@@ -70,11 +102,11 @@ function makeMenuFromTemplete(menuArray, level)
     }
   })
   document.getElementById("footer").addEventListener('click',()=>{
-    menuActivated=false;
+    menu$menuActivated=false;
     for(k=level;k<=2;k++){
-      if(path[k]!=null){
-        var sub = getSubmenu(path[k]);
-        path[k].style.backgroundColor='#e8e8e8';
+      if(menu$path[k]!=null){
+        var sub = getSubmenu(menu$path[k]);
+        menu$path[k].style.backgroundColor='#e8e8e8';
         if(sub!=null){
           sub.style.display='none';
         }
@@ -84,9 +116,9 @@ function makeMenuFromTemplete(menuArray, level)
     }
   })
   function getSubmenu(menuItem){
-    for(j=0;j<menuArray.length;j++){
-      if(menuArray[j].elemnt == menuItem){
-        return menuArray[j].subMenu;
+    for(j=0;j<menu$totalMenuArray.length;j++){
+      if(menu$totalMenuArray[j].elemnt == menuItem){
+        return menu$totalMenuArray[j].subMenu;
       }
     }
   }
