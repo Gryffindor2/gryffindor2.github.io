@@ -1,25 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
   <meta name=”viewport” content=”width=device-width, initial-scale=1″ />
   <title>photon</title>
-  <link rel="stylesheet" href="./css/style.css">
-  <script src="./js/main.js"></script>
-  <script src="./js/ui/menu.js"></script>
-  <script src="./js/ui/layout.js"></script>
-
-  <script id="vertexShader" type="x-shader/x-vertex">
-    void main() {
-        gl_Position = vec4(0.0, 0.0, 0.0, 1.0);
-        gl_PointSize = 100.0;
-    }
-  </script>
-  <script id="fragmentShader" type="x-shader/x-fragment">
-    void main() {
-        gl_FragColor = vec4(1.0, 1.0, 0.0, 1.0);
-    }
-  </script>
+  <link rel="stylesheet" href="./ui/main/style.css">
+  <link rel="stylesheet" href="./ui/menu/menu.css">
+  <link rel="stylesheet" href="./ui/toolbar/toolbar.css">
+  <script src="./main.js"></script>
+  <script src="./ui/menu/menu.js"></script>
+  <script src="./ui/main/layout.js"></script>
+  <script src="./webgl/kernel.js"></script>
+  <script src="./common.js"></script>
+  <script src="./ui/toolbar/main.js"></script>
 </head>
 <body onload="main()" onresize="resize()">
   <div id = "applicationWindow">
@@ -96,19 +89,53 @@
             你的浏览器似乎不支持或者禁用了 HTML5 canvas 元素。
           </canvas>
         </div>
-        <div id="toolbar">
-
+        <div id="toolbar" class="verticalFlexContainer">
           <div id="toolbarMoveHandle">
           </div>
-          <div id="toolSelectionPanel">
-      
+          <div id="toolBarPlaceHolder">
+            
           </div>
-          <div id="toolSettings">
+          <div class="horizontalFlexContainer" id="toolbarMainContainer">
+            <div id="toolSelectionPanel">
+              <div class="tool" id="selectTool">
+  
+              </div>
+              <div class="tool" id="tool2">
+  
+              </div>
+              <div class="tool" id="tool3">
+  
+              </div>
+              <div class="tool">
+  
+              </div>
+              <div class="tool">
+  
+              </div>
+              <div class="tool">
+  
+              </div>
+              <div class="tool">
+  
+              </div>
+              <div class="tool">
+  
+              </div>
+              <div class="tool">
+  
+              </div>
+              <div class="tool">
+  
+              </div>
+              <div class="tool">
+  
+              </div>
+            </div>
+            <div id="toolSettings">
       
+            </div>
           </div>
         </div>
-
-
       </div>
       <div id="resizableContainer">
         <div id="horizontalSperator"></div>
@@ -128,7 +155,7 @@
 
 
     </div>
-    <div id="footer">
+    <div id="footer" class="unselectable">
       23MB
     </div>
   </div>
