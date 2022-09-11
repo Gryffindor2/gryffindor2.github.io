@@ -1,0 +1,11 @@
+.unselectable{
+    user-select: none;
+}
+.horizontalFlexContainer{
+    display: flex;
+    flex-flow: row;
+}
+.verticalFlexContainer{
+    display: flex;
+    flex-flow: column;
+}

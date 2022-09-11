@@ -1,0 +1,35 @@
+.window{
+    position: absolute;
+    z-index: 4;
+    border-radius: 9px;
+}
+#outerWindow{
+    background-color: white;
+    height: 300px;
+    width: 300px;
+    overflow: hidden;
+    box-shadow: 3px 6px 6px rgb(139, 139, 139);
+}
+.titleBar{
+    width: 100%;
+    height: 40px;
+    background-color: #cdcdcd;
+}#title{
+    flex:1;
+    height: 100%;
+    line-height: 40px;
+    margin-left: 5px;
+}
+#close{
+    background-color: transparent;
+    height: 100%;
+    width: 40px;
+    font-family: Segoe MDL2 Assets;
+    line-height: 40px;
+    text-align: center;
+    font-size: large;
+}
+#close:hover{
+    background-color: red;
+    color: white;
+}

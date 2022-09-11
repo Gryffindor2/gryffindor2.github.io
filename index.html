@@ -7,14 +7,28 @@
   <link rel="stylesheet" href="./ui/main/style.css">
   <link rel="stylesheet" href="./ui/menu/menu.css">
   <link rel="stylesheet" href="./ui/toolbar/toolbar.css">
+  <link rel="stylesheet" href="./ui/window/window.css">
+  <link rel="stylesheet" href="./ui/main/public.css">
+  <!--<script src="./dependence/jquery-3.6.1.min.js"></script>-->
   <script src="./main.js"></script>
   <script src="./ui/menu/menu.js"></script>
   <script src="./ui/main/layout.js"></script>
   <script src="./webgl/kernel.js"></script>
-  <script src="./common.js"></script>
   <script src="./ui/toolbar/main.js"></script>
+  <script src="./ui/components/main.js"></script>
+  <script src="./ui/window/main.js"></script>
+  
 </head>
-<body onload="main()" onresize="resize()">
+<body onload="main()" onresize="resize()" id="App">
+  <!--<div id="outerWindow" class="window verticalFlexContainer unselectable">
+    <div class="titleBar horizontalFlexContainer" id="t1">
+      <div id="title">this is a window</div>
+      <div id="close">&#xE106;</div>
+    </div>
+    <div id="mainWindow">
+
+    </div>
+  </div>-->
   <div id = "applicationWindow">
     <div id="menu">
       <div id="logo" class="unselectable">

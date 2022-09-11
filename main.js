@@ -15,6 +15,7 @@ function main() {
 	})
   var toolbar = document.getElementById("toolbar");
   enableDrag(toolbar, document.getElementById("toolbarMoveHandle"))
+  //enableDrag(instanceOf('outerWindow'),instanceOf('t1'));
   enableResizeVertical(attributePanel, layerPanel, seperator);
   enableResizeHorizontal(null,document.getElementById("resizableContainer"),document.getElementById("horizontalSperator"))
   makeMenuFromTemplete([{exe:null,
@@ -85,6 +86,10 @@ function main() {
   buildToolBarFromTemplete([instanceOf('selectTool'),instanceOf('tool2'),instanceOf('tool3')]);
   var gl = gl_init(document.getElementById("glcanvas"));
   gl_refresh(gl);
+  let window1 = new Window('outerWindow');
+  addNewComponentBeforeById('App',window1.instance());
+  enableDrag(instanceOf('outerWindow'),instanceOf('t1'));
+  window1.show();
 }
 function info(){
   alert("info")
