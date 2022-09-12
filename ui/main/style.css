@@ -22,7 +22,6 @@
   flex-flow: column;
   justify-content: stretch;
 }
-
 #rightSidebar{
   display: flex;
   flex-flow: column;
@@ -65,7 +64,7 @@ html,body{
 }
 #horizontalSperator{
   cursor: e-resize;
-  width: 3px;
+  width: 8px;
   background-color: gray;
 }
 .panel{

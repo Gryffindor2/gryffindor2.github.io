@@ -2,6 +2,7 @@ var menu$path = new Array(3);
 var menu$menuActivated = false;
 var menu$totalMenuArray =[];
 var menu$maxLevel;
+var menu$touch;
 function makeMenuFromTemplete(menuArray, level)
 {
   menu$totalMenuArray = menu$totalMenuArray.concat(menuArray);
@@ -25,9 +26,12 @@ function makeMenuFromTemplete(menuArray, level)
       });
     }
     else{
+      menuItem.addEventListener('touchstart',event=>{
+        menu$touch = true;
+      });
       menuItem.addEventListener('click', event=>{
         var mis = getSubmenu(event.target);
-        if(mis.style.display != 'block'){
+        if(mis.style.display != 'block' || menu$touch == true){
           mis.style.display = 'block';
           if(level == 0){
             mis.style.left = event.target.offsetLeft+'px';
@@ -48,6 +52,7 @@ function makeMenuFromTemplete(menuArray, level)
             menu$path[level] =  null;
           }
         }
+        menu$touch =false;
       });
     }
     menuItem.addEventListener('mouseover',event=>{
@@ -88,7 +93,7 @@ function makeMenuFromTemplete(menuArray, level)
       event.target.style.backgroundColor='#d7d7d7';
     });
     menuItem.addEventListener('mouseout',event=>{
-      if(menu$menuActivated == false || event.target == menu$path[menu$maxLevel]){
+      if((menu$menuActivated == false || event.target == menu$path[menu$maxLevel])&& menu$touch==false){
         event.target.style.backgroundColor='#e8e8e8';
       }
     });
