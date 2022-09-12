@@ -29,8 +29,14 @@ function makeMenuFromTemplete(menuArray, level)
         var mis = getSubmenu(event.target);
         if(mis.style.display != 'block'){
           mis.style.display = 'block';
-          mis.style.left = event.target.offsetLeft+'px';
-          mis.style.top = event.target.offsetTop + event.target.offsetHeight +1 +'px';
+          if(level == 0){
+            mis.style.left = event.target.offsetLeft+'px';
+            mis.style.top = event.target.offsetTop + event.target.offsetHeight +1 +'px';
+          }
+          else{
+            mis.style.left = event.target.parentNode.offsetLeft + event.target.offsetLeft + event.target.offsetWidth +  1 +'px';
+            mis.style.top = event.target.parentNode.offsetTop + event.target.offsetTop - 7 + 'px';
+          }
           menu$menuActivated = true;
           menu$path[level] =  event.target;
           menu$maxLevel=level;

@@ -11,24 +11,20 @@
   <link rel="stylesheet" href="./ui/main/public.css">
   <!--<script src="./dependence/jquery-3.6.1.min.js"></script>-->
   <script src="./main.js"></script>
+  <script src="./ui/menu/templete.js"></script>
   <script src="./ui/menu/menu.js"></script>
+  
   <script src="./ui/main/layout.js"></script>
   <script src="./webgl/kernel.js"></script>
-  <script src="./ui/toolbar/main.js"></script>
+  <script src="./ui/toolbar/toolbar.js"></script>
   <script src="./ui/components/main.js"></script>
-  <script src="./ui/window/main.js"></script>
-  
+  <script src="./ui/window/window.js"></script>
+  <script src="./ui/menu/templete.js"></script>
 </head>
 <body onload="main()" onresize="resize()" id="App">
-  <!--<div id="outerWindow" class="window verticalFlexContainer unselectable">
-    <div class="titleBar horizontalFlexContainer" id="t1">
-      <div id="title">this is a window</div>
-      <div id="close">&#xE106;</div>
-    </div>
-    <div id="mainWindow">
+  <div id="windowContainer"> 
 
-    </div>
-  </div>-->
+  </div>
   <div id = "applicationWindow">
     <div id="menu">
       <div id="logo" class="unselectable">
@@ -68,7 +64,7 @@
       </div>
       <div class="subMenu unselectable" id="newSubMenu">
         <div class="subMenuItem" id="layerMenu">
-          图层
+          窗口
         </div>
       </div>
       <div class="menuItem unselectable" id="viewMenu">
@@ -166,8 +162,6 @@
           </div>
         </div>
     </div>
-
-
     </div>
     <div id="footer" class="unselectable">
       23MB
