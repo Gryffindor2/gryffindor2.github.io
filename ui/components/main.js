@@ -20,7 +20,9 @@ function addNewComponentBeforeById(idOfParent,components){
 }
 class Frame{
     constructor(type,id){
+
         this.ins = document.createElement(type);
+
         this.ins.id = id;
     }
     instance(){
@@ -33,3 +35,27 @@ class Frame{
         this.ins.innerHTML = text;
     }
 }
+class Image extends Frame{
+    constructor(id){
+        super('img',id);
+    }
+    setSource(path){
+        this.ins.src=path;
+    }
+}
+/*class SVG extends Frame{
+    constructor(id){
+        super('svg',id);
+        this.ins.setAttribute("verson", '1.1');
+        this.ins.setAttribute('baseProfile',"full");
+        this.ins.setAttribute('xmlns',"http://www.w3.org/2000/svg");
+        this.ins.setAttribute('viewBox',"0 0 1024 1024");
+        this.ins.width="200"; 
+        this.ins.height="200";
+        this.path = new Frame('path', 'pathOf' + id);
+        addNewComponent(this.ins,this.path.instance());
+    }
+    setPath(d){
+        this.path.instance().setAttribute('d', d);
+    }
+}*/

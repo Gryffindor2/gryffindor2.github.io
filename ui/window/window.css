@@ -19,18 +19,19 @@
     line-height: 40px;
     margin-left: 5px;
 }
-.close{
-    background-color: transparent;
+.closeBG{
     height: 100%;
     width: 40px;
-    font-family: Segoe MDL2 Assets;
-    line-height: 40px;
-    text-align: center;
-    font-size: large;
+}
+.close{
+    width:100%;
+    height: 100%;
+}
+.closeBG:hover{
+    background-color: red;
 }
 .close:hover{
-    background-color: red;
-    color: white;
+    filter: invert(100%);
 }
 .bot{
     width: 100%;

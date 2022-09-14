@@ -2,7 +2,7 @@ var menu$path = new Array(3);
 var menu$menuActivated = false;
 var menu$totalMenuArray =[];
 var menu$maxLevel;
-var menu$touch;
+var menu$touch = false;
 function makeMenuFromTemplete(menuArray, level)
 {
   menu$totalMenuArray = menu$totalMenuArray.concat(menuArray);
@@ -37,13 +37,20 @@ function makeMenuFromTemplete(menuArray, level)
             mis.style.left = event.target.offsetLeft+'px';
             mis.style.top = event.target.offsetTop + event.target.offsetHeight +1 +'px';
           }
+          
           else{
             mis.style.left = event.target.parentNode.offsetLeft + event.target.offsetLeft + event.target.offsetWidth +  1 +'px';
             mis.style.top = event.target.parentNode.offsetTop + event.target.offsetTop - 7 + 'px';
           }
+          
           menu$menuActivated = true;
           menu$path[level] =  event.target;
-          menu$maxLevel=level;
+          if(menu$touch == true){
+            menu$maxLevel=level+1;
+          }
+          else{
+            menu$maxLevel=level;
+          }
         }
         else{
           mis.style.display = 'none';
@@ -69,9 +76,7 @@ function makeMenuFromTemplete(menuArray, level)
                 sub.style.display='none';
               }
             }else{
-              
               break;
-              
             }
           }
         }

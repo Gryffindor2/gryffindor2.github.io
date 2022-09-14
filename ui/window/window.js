@@ -11,10 +11,13 @@ class Window extends Frame{
         this.title.addClass('title');
         this.title.setText('title');
         addNewComponent(this.titleBar.instance(),this.title.instance());
-        this.close = new Frame('div','closeOf'+id);
+        this.closeBG = new Frame('id', 'closeBGOf'+id);
+        this.closeBG.addClass('closeBG');
+        this.close = new Image('closeOf'+id);
         this.close.addClass('close');
-        this.close.setText('&#xE106;');
-        addNewComponent(this.titleBar.instance(),this.close.instance())
+        this.close.setSource('./assets/icon/close.png');
+        addNewComponent(this.closeBG.instance(),this.close.instance());
+        addNewComponent(this.titleBar.instance(),this.closeBG.instance());
         addNewComponent(this.ins,this.titleBar.instance());
         this.mainWindow = new Frame('div','mainWindowOf' + id);
         this.mainWindow.addClass('mainWindow');
