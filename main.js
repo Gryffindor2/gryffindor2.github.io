@@ -17,7 +17,7 @@ function main() {
   enableDrag(toolbar, document.getElementById("toolbarMoveHandle"))
   //enableDrag(instanceOf('outerWindow'),instanceOf('t1'));
   enableResizeVertical(attributePanel, layerPanel, seperator);
-  enableResizeHorizontal(null,document.getElementById("resizableContainer"),document.getElementById("horizontalSperator"))
+  enableResizeHorizontal(null,instanceOf("resizableContainer"),document.getElementById("horizontalSperator"))
   makeMenuFromTemplete(menuTemplete.firstLevel, 0);
   //二级菜单
   makeMenuFromTemplete(menuTemplete.secondLevel, 1);
@@ -26,11 +26,9 @@ function main() {
   buildToolBarFromTemplete([instanceOf('selectTool'),instanceOf('tool2'),instanceOf('tool3')]);
   var gl = gl_init(document.getElementById("glcanvas"));
   gl_refresh(gl);
-  let window1 = new Window('windowContainer','outerWindow');
-  window1.setSize('400px','400px');
-  window1.setPos('30px','40px');
-  window1.setTitle('ababababba');
+  let msg = new MessageBox('消息框','哈哈哈哈哈哈');
+
 }
 function info(){
-  alert("info")
+  let msg = new MessageBox('消息框','info');
 }

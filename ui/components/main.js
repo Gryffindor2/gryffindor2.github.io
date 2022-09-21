@@ -1,11 +1,9 @@
 function styleOf(id){
     return document.getElementById(id).style;
 }
-
 function instanceOf(id){
     return document.getElementById(id);
 }
-
 function addNewComponentById(idOfParent,components){
     instanceOf(idOfParent).appendChild(components);
 }
@@ -20,10 +18,9 @@ function addNewComponentBeforeById(idOfParent,components){
 }
 class Frame{
     constructor(type,id){
-
         this.ins = document.createElement(type);
-
         this.ins.id = id;
+        this.ins.style.boxSizing = 'border-box';
     }
     instance(){
         return this.ins;
@@ -34,6 +31,35 @@ class Frame{
     setText(text){
         this.ins.innerHTML = text;
     }
+    appendComponent(comp){
+        addNewComponent(this.ins,comp.instance());
+    }
+    setSize(width,height){
+        this.ins.style.height = height;
+        this.ins.style.width = width;
+    }
+    setPos(top,left){
+        this.ins.style.top = top;
+        this.ins.style.left = left;
+    }
+    set horizontalAlignment(direction){
+        switch(direction){
+            case 'left':
+                this.ins.style.float = 'left';
+                break;
+            case 'right':
+                this.ins.style.float = 'right';
+                break;
+            default:
+                throw 'invalid value';
+        }
+    }
+    set margin(margin){
+        this.ins.style.marginLeft = margin[0];
+        this.ins.style.marginTop = margin[1]
+        this.ins.style.marginRight = margin[2]
+        this.ins.style.marginBottom = margin[3]
+    }
 }
 class Image extends Frame{
     constructor(id){
@@ -43,19 +69,3 @@ class Image extends Frame{
         this.ins.src=path;
     }
 }
-/*class SVG extends Frame{
-    constructor(id){
-        super('svg',id);
-        this.ins.setAttribute("verson", '1.1');
-        this.ins.setAttribute('baseProfile',"full");
-        this.ins.setAttribute('xmlns',"http://www.w3.org/2000/svg");
-        this.ins.setAttribute('viewBox',"0 0 1024 1024");
-        this.ins.width="200"; 
-        this.ins.height="200";
-        this.path = new Frame('path', 'pathOf' + id);
-        addNewComponent(this.ins,this.path.instance());
-    }
-    setPath(d){
-        this.path.instance().setAttribute('d', d);
-    }
-}*/

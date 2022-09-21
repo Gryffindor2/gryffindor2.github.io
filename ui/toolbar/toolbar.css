@@ -6,7 +6,6 @@
 #toolbar{
     position: absolute;
     background-color: lightgray;
-    z-index: 1;
     height: 600px;
     width: 200px;
     border-radius: 7px;

@@ -4,28 +4,25 @@
   <meta charset="UTF-8">
   <meta name=”viewport” content=”width=device-width, initial-scale=1″ />
   <title>photon</title>
-  <link rel="stylesheet" href="./ui/main/style.css">
-  <link rel="stylesheet" href="./ui/menu/menu.css">
-  <link rel="stylesheet" href="./ui/toolbar/toolbar.css">
-  <link rel="stylesheet" href="./ui/window/window.css">
-  <link rel="stylesheet" href="./ui/main/public.css">
-  <link rel="stylesheet" href="./ui/scrollBar/scrollbar.css">
   <!--<script src="./dependence/jquery-3.6.1.min.js"></script>-->
+  <script src="./dependence/import.js"></script>
   <script src="./main.js"></script>
-  <script src="./ui/menu/templete.js"></script>
   <script src="./ui/menu/menu.js"></script>
   <script src="./ui/main/layout.js"></script>
   <script src="./webgl/kernel.js"></script>
   <script src="./ui/toolbar/toolbar.js"></script>
   <script src="./ui/components/main.js"></script>
-  <script src="./ui/window/window.js"></script>
+  <script src="./ui/components/window/window.js"></script>
   <script src="./ui/menu/templete.js"></script>
+  <script src="./ui/components/components.js"></script>
 </head>
 <body onload="main()" onresize="resize()" id="App">
+
   <div id="windowContainer"> 
 
   </div>
   <div id = "applicationWindow">
+    <div id="placeHolder"></div>
     <div id="menu">
       <div id="logo" class="unselectable">
         logo
@@ -93,7 +90,8 @@
       </div>
     </div>
     <div id="workbench">
-      <div id="left">
+      <div id="left" class="verticalFlexContainer">
+
         <div id="canvasContainer">
           <canvas id="glcanvas">
             你的浏览器似乎不支持或者禁用了 HTML5 canvas 元素。
@@ -103,7 +101,6 @@
           <div id="toolbarMoveHandle">
           </div>
           <div id="toolBarPlaceHolder">
-            
           </div>
           <div class="horizontalFlexContainer" id="toolbarMainContainer">
             <div id="toolSelectionPanel">

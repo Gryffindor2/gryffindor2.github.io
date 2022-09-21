@@ -67,7 +67,7 @@ var menuTemplete = {
     },
     get thirdLevel(){
         return [{exe:()=>{  
-            let window1 = new Window('windowContainer','x');
+            let window1 = new Window('x');
                 window1.setSize('600px','400px');
                 window1.setTitle('hhh');
             },

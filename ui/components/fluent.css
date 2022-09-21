@@ -1,0 +1,8 @@
+.buttonFluent{
+   background-color: #f8f9f9;
+   border-radius: 5px;
+   border: 0.7px solid #c3c5c6;
+}
+.buttonFluent:hover{
+    background-color: #e7e9eb;
+}

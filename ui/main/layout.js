@@ -185,4 +185,4 @@ function resize(){
     var toolbar = document.getElementById("toolbar");
     toolbar.style.top = '10px';
     toolbar.style.left = '10px';
-  }
+}
