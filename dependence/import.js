@@ -10,7 +10,6 @@ $using('./ui/components/components.js');*/
 $resourceDictionary('./ui/main/style.css');
 $resourceDictionary('./ui/menu/menu.css');
 $resourceDictionary('./ui/toolbar/toolbar.css');
-$resourceDictionary('./ui/components/window/window.css')
 $resourceDictionary('./ui/main/public.css');
 $resourceDictionary('./ui/scrollBar/scrollbar.css');
 $resourceDictionary('./ui/components/fluent.css');

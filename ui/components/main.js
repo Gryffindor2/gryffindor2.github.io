@@ -28,6 +28,9 @@ class Frame{
     addClass(className){
         this.ins.classList.add(className);
     }
+    removeClass(className){
+        this.ins.classList.remove(className);
+    }
     setText(text){
         this.ins.innerHTML = text;
     }
@@ -60,12 +63,7 @@ class Frame{
         this.ins.style.marginRight = margin[2]
         this.ins.style.marginBottom = margin[3]
     }
-}
-class Image extends Frame{
-    constructor(id){
-        super('img',id);
-    }
-    setSource(path){
-        this.ins.src=path;
+    set onClick(func){
+        this.ins.addEventListener('click',func);
     }
 }

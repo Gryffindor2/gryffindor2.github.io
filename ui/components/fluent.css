@@ -2,7 +2,87 @@
    background-color: #f8f9f9;
    border-radius: 5px;
    border: 0.7px solid #c3c5c6;
+   border-bottom: #868686 solid 1.4px;
 }
 .buttonFluent:hover{
     background-color: #e7e9eb;
+}
+.buttonFluent:active{
+    border-bottom: 0.7px solid #c3c5c6;
+    color: #5d5d5d;
+}
+/*window*/
+.window{
+    position: absolute;
+    z-index: 5;
+    border-radius: 9px;
+    box-shadow: 3px 6px 6px rgb(139, 139, 139);
+    background-color: white;
+    border: #bebebe solid 0.5px;
+    overflow: hidden;
+}
+.titleBar{
+    width: 100%;
+    height: 40px;
+    background-color: #f3f3f3;
+}
+.title{
+    flex:1;
+    height: 100%;
+    line-height: 40px;
+    margin-left: 5px;
+}
+.closeBG{
+    height: 100%;
+    width: 40px;
+}
+.close{
+    width:100%;
+    height: 100%;
+}
+.closeBG:hover{
+    background-color: red;
+}
+.close:hover{
+    filter: invert(100%);
+}
+.bot{
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    cursor: n-resize;
+    bottom: 0px;
+}
+.mainWindow{
+    width: 100%;
+    flex: 1;
+}
+#placeHolder{
+    background-color: white;
+    opacity: 0.4;
+    width: 100%;
+    height: 100%;
+    z-index: 6;
+    position: fixed;
+    display: none;
+}
+/*textbox*/
+.textBox{
+    background-color: #f8f9f9;
+    outline-style: none ;
+    border: 1px solid #ccc; 
+    border-bottom: #868686 solid 1.4px;
+    border-radius: 3px;
+}
+.textBox:focus{
+    background-color: white;
+    border-bottom: #0067c0 solid 2px;
+    outline: 0;
+}
+.unactivatedTextBox:hover{
+    background-color: #f0f1f2;
+}
+/*textBlock*/
+.textBlockFluent{
+    margin: 0px;
 }
