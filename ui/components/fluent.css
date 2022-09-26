@@ -1,3 +1,25 @@
+.fluentClickableNoBorder:active{
+    color: #5d5d5d;
+}
+.fluentClickable{
+    border-bottom: 0.7px solid #c3c5c6;
+    color: #5d5d5d;
+}
+.fluentClickable:hover, .fluentClickableNoBorder:hover{
+    background-color: #e7e9eb;
+}
+.fluentBorder{
+    border-radius: 5px;
+    border: 0.7px solid #c3c5c6;
+    border-bottom: #868686 solid 1.4px;
+}
+.horizontalScrollable{
+    overflow-x: scroll;
+}
+.verticalScrollable{
+    overflow-y: scroll;
+}
+/*button*/
 .buttonFluent{
    background-color: #f8f9f9;
    border-radius: 5px;
@@ -78,6 +100,7 @@
     background-color: white;
     border-bottom: #0067c0 solid 2px;
     outline: 0;
+    transition: 0.1s;
 }
 .unactivatedTextBox:hover{
     background-color: #f0f1f2;
@@ -85,4 +108,86 @@
 /*textBlock*/
 .textBlockFluent{
     margin: 0px;
+}
+/*comboBox*/
+.comboBoxFluent{
+    background-color: #f9f9f9;
+}
+.comboBoxFluent p{
+    flex:1;
+}
+.comboBoxFluent .dropDownImage{
+    width: 90px;
+    top: 30px;
+}
+.comboBoxItem{
+    width: calc(100%-6px);
+    border-radius: 5px;
+}
+.comboBoxIndicator{
+    height: 15px;
+    width: 3px;
+    border-radius: 1.5px;
+
+}
+.comboBoxItemActivated{
+    background-color: #efefef;
+}
+.comboBoxItemActivated .comboBoxIndicator{
+    background-color: #0067c0;
+}
+/*flyout*/
+.flyoutFluent{
+    position: absolute;
+    background-color: #f9f9f9;
+}
+/*toggleSwitch*/
+.toggleSwitchFluentOff{
+    background-color: #f3f3f3;
+    border-radius: 13px;
+    border: #868686 solid 0.5px;
+    flex-direction: row;
+    transition: 0.4s;
+}
+.toggleSwitchFluentOff .switchFluent{
+    width: 18px;
+    height: 18px;
+    background-color: #868686;
+    border-radius: 9px;
+    margin-left: 4px;
+    margin-right: 4px;
+    transition: 0.1s linear;
+}
+.toggleSwitchFluentOff:hover .switchFluent{
+    width: 20px;
+    height: 20px;
+    background-color: #868686;
+    border-radius: 10px;
+    margin-left: 3px;
+    margin-right: 3px;
+    transition: 0.1s linear;
+}
+.toggleSwitchFluentOn{
+    background-color: #006fc0;
+    flex-direction: row-reverse;
+    border-radius: 13px;
+    transition: 0.4s;
+}
+.toggleSwitchFluentOn .switchFluent{
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    border-radius: 9px;
+    margin-left: 4px;
+    margin-right: 4px;
+    transition: 0.1s linear;
+}
+.toggleSwitchFluentOn:hover .switchFluent{
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-left: 3px;
+    margin-right: 3px;
+    transition: 0.1s linear;
 }

@@ -58,9 +58,20 @@ function main() {
   button.setSize('70px','30px');
   button.margin = ['5px','5px','5px','5px'];
   button.onClick = ()=>{
+    //info(button.width);
     info('height is '+textBlock.text+' and width is '+textBlock1.text);
   }
   sp3.appendComponent(button);
+  var combox = new ComboBox('cbbx');
+  combox.placeHolder='select';
+  combox.setSize('80px','30px')
+  combox.addItem('a');
+  combox.addItem('b');
+  combox.addItem('d');
+  combox.addItem('c');
+  combox.margin = ['5px','5px','5px','5px'];
+  sp3.appendComponent(combox);
+  sp3.appendComponent(new ToggleSwitch('sdfadf'));
 }
 function info(info){
   let msg = new MessageBox('消息框',info==null?'info':info);

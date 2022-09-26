@@ -31,8 +31,16 @@ class Frame{
     removeClass(className){
         this.ins.classList.remove(className);
     }
-    setText(text){
-        this.ins.innerHTML = text;
+    set text(t){
+        this.innerText = t;
+        this.ins.innerHTML = this.innerText;
+    }
+    get text(){
+        return this.innerText;
+    }
+    setText(t){
+        this.innerText = t;
+        this.ins.innerHTML = this.innerText;
     }
     appendComponent(comp){
         addNewComponent(this.ins,comp.instance());
@@ -40,10 +48,36 @@ class Frame{
     setSize(width,height){
         this.ins.style.height = height;
         this.ins.style.width = width;
+        //this.ins.style.lineHeight = this.ins.style.height;
+    }
+    set width(w){
+        this.ins.style.width = w + 'px';
+    }
+    get width(){
+        return this.ins.offsetWidth;
+    }
+    set height(h){
+        this.ins.style.height = h + 'px';
+        //this.ins.style.lineHeight = this.ins.style.height;
+    }
+    get height(){
+        return this.ins.offsetHeight;
     }
     setPos(top,left){
         this.ins.style.top = top;
         this.ins.style.left = left;
+    }
+    get x(){
+        return this.ins.offsetLeft;
+    }
+    set x(x){
+        this.ins.style.left = x+'px';
+    }
+    get y(){
+        return this.ins.offsetTop;
+    }
+    set y(y){
+        this.ins.style.top = y+'px';
     }
     set horizontalAlignment(direction){
         switch(direction){
@@ -63,7 +97,16 @@ class Frame{
         this.ins.style.marginRight = margin[2]
         this.ins.style.marginBottom = margin[3]
     }
+    get margin(){
+        return [this.ins.style.marginLeft,this.ins.style.marginTop,this.ins.style.marginRight,this.ins.style.marginBottom]
+    }
     set onClick(func){
         this.ins.addEventListener('click',func);
+    }
+    set maxHeight(mh){
+        this.ins.style.maxHeight = mh +'px';
+    }
+    set maxWidth(mw){
+        this.ins.style.maxWidth = mw + 'px';
     }
 }
