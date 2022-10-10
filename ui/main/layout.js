@@ -20,9 +20,9 @@ function enableResizeVertical(top,bottom,handle){
     //e.preventDefault();
     // 在启动时获取鼠标光标位置:
     originY = e.touches[0].clientY;
-    document.ontouchend = closeDragElement_touch;
     // 每当光标移动时调用一个函数:
-    document.ontouchmove = elementDrag_touch;
+    document.addEventListener('touchmove', elementDrag_touch);
+    document.addEventListener('touchend', closeDragElement_touch);
   }
   function elementDrag(e) {
     e = e || window.event;
@@ -55,11 +55,11 @@ function enableResizeVertical(top,bottom,handle){
   }
   function closeDragElement_touch() {
     // 释放鼠标按钮时停止移动:
-    document.ontouchend = null;
-    document.ontouchmove = null;
+    document.removeEventListener('touchmove', elementDrag_touch);
+    document.removeEventListener('touchend', closeDragElement_touch);
   }
 }
-function enableResizeHorizontal(left,right,handle)
+function enableResizeHorizontal(left,right,handle,minLeft,maxRight)
 {
   var originX = 0, deltaX = 0;
   handle.onmousedown = dragMouseDown;
@@ -89,10 +89,15 @@ function enableResizeHorizontal(left,right,handle)
     deltaX = originX - e.clientX;
     originX = e.clientX;
     // 设置元素的新位置:
+    if(minLeft!=null && (Number(handle.style.left.slice(0, -2)) - deltaX<minLeft) || Number(handle.style.left.slice(0, -2)) - deltaX>maxRight){
+      return;
+    }
     if(left!=null)
       left.style.width = (Number(left.style.width.slice(0, -2)) - deltaX) + 'px';
     if(right!=null)
       right.style.width = (Number(right.style.width.slice(0, -2)) + deltaX) + 'px';
+    
+    handle.style.left = (Number(handle.style.left.slice(0, -2)) - deltaX) + 'px';
   }
   function elementDrag_touch(e) {
     e = e || window.event;

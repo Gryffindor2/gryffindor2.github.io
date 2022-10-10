@@ -28,7 +28,7 @@ function main() {
   gl_refresh(gl);
   let newProjectWindow = new Window('newProjectWindow');
   newProjectWindow.setSize('800px','600px');
-  newProjectWindow.setTitle('新建工程');
+  newProjectWindow.title = '新建工程';
   var spm = new StackPanel('mainStackpanel');
   var sp1 = new StackPanel('s1');
   sp1.direction = 'horizontal';
@@ -62,7 +62,7 @@ function main() {
     info('height is '+textBlock.text+' and width is '+textBlock1.text);
   }
   sp3.appendComponent(button);
-  var combox = new ComboBox('cbbx');
+  var combox = new ComboBox('cbbx', newProjectWindow.getMainWindow());
   combox.placeHolder='select';
   combox.setSize('80px','30px')
   combox.addItem('a');
@@ -72,6 +72,12 @@ function main() {
   combox.margin = ['5px','5px','5px','5px'];
   sp3.appendComponent(combox);
   sp3.appendComponent(new ToggleSwitch('sdfadf'));
+  var slider = new Slider('horizontal','sdfa');
+  slider.maxValue = 100;
+  slider.valueChanged = ()=>{
+    textBlock1.text = String(slider.value);
+  }
+  sp3.appendComponent(slider);
 }
 function info(info){
   let msg = new MessageBox('消息框',info==null?'info':info);

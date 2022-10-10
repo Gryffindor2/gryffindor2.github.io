@@ -37,7 +37,11 @@ var menuTemplete = {
             {exe:info,
             subMenu:null,
             elemnt:document.getElementById('saveMenu')},
-        
+            
+            {exe:info,
+            subMenu:null,
+            elemnt:instanceOf('newMenu')},
+
             {exe:info,
             subMenu:null,
             elemnt:document.getElementById('copyMenu')},
@@ -69,7 +73,7 @@ var menuTemplete = {
         return [{exe:()=>{  
             let window1 = new Window('x');
                 window1.setSize('600px','400px');
-                window1.setTitle('hhh');
+                window1.title='hhh';
             },
             subMenu:null,
             elemnt:document.getElementById('layerMenu')}

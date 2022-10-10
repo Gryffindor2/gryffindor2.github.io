@@ -1,59 +1,51 @@
 class Button extends Frame{
     constructor(text,id){
         super('div',id);
-        this.setText(text);
+        this.text = text;
         this.addClass('buttonFluent');
-        this.ins.style.textAlign = 'center';
+        this.style.textAlign = 'center';
+        this.style.lineHeight = this.style.height;
     }
     setSize(width,height){
         super.setSize(width,height);
-        this.ins.style.lineHeight = this.ins.style.height;
+        this.style.lineHeight = this.style.height;
+    }
+    set height(height){
+        this.height = height;
+        this.style.lineHeight = this,this.style.height;
     }
 }
 class TextBlock extends Frame{
     constructor(text,id){
         super('p',id);
-        this.setText(text);
-        this.text=text;
-        this.addClass('unselectable');
-        this.addClass('textBlockFluent');
-    }
-    set text(t){
-        this.setText(t);
-    }
-    get text(){
-        return this.text;
+        this.text = text;
+        this.addClass('unselectable','textBlockFluent');
     }
 }
 class Image extends Frame{
     constructor(id){
         super('img',id);
     }
-    setSource(path){
-        this.ins.src=path;
-        return;
-    }
     set source(path){
-        this.ins.src=path;
+        this._ins.src=path;
     }
 }
 class TextBox extends Frame{
     constructor(id){
         super('input',id);
-        this.ins.type = 'text';
-        this.addClass('textBox');
-        this.addClass('unactivatedTextBox');
-        this.ins.addEventListener('mousedown',event=>{this.removeClass('unactivatedTextBox')});
-        this.ins.addEventListener('blur',event=>{this.addClass('unactivatedTextBox')});
+        this._ins.type = 'text';
+        this.addClass('textBox', 'unactivatedTextBox');
+        this._ins.addEventListener('mousedown',event=>{this.removeClass('unactivatedTextBox')});
+        this._ins.addEventListener('blur',event=>{this.addClass('unactivatedTextBox')});
     }
     set placeHolder(text){
-        this.ins.setAttribute('placeholder',text);
+        this._ins.setAttribute('placeholder',text);
     }
     set text(t){
-        this.ins.value = t;
+        this._ins.value = t;
     }
     get text(){
-        return this.ins.value;
+        return this._ins.value;
     }
 }
 class StackPanel extends Frame{
@@ -77,45 +69,42 @@ class StackPanel extends Frame{
 }
 class ComboBox extends Frame{
     items = new Array();
-    constructor(id){
+    _flyoutShowed = false;
+    constructor(id, cancelArea){
         super('div',id);
-        this.comboBoxContainer = new StackPanel('comboBoxContainer-'+id);
-        this.comboBoxContainer.height=30;
-        this.comboBoxContainer.addClass('comboBoxFluent');
-        this.comboBoxContainer.addClass('fluentClickable');
-        this.comboBoxContainer.addClass('fluentBorder');
-        this.contentTextBlock = new TextBlock('','textBlock-'+id);
-        this.contentTextBlock.margin = ['3px','0','0','0'];
-        this.comboBoxContainer.direction = 'horizontal';
-        var dropDownImage = new Image('image-'+id);
+        this._comboBoxContainer = new StackPanel('comboBoxContainer-'+id);
+        this._comboBoxContainer.height=30;
+        this._comboBoxContainer.addClass('comboBoxFluent', 'fluentClickable', 'fluentBorder');
+        this._contentTextBlock = new TextBlock('','textBlock-'+id);
+        this._contentTextBlock.margin = ['3px','0','0','0'];
+        this._comboBoxContainer.direction = 'horizontal';
+        var dropDownImage = new Image('dropDownImage-'+id);
         dropDownImage.addClass('dropDownImage');
-        this.comboBoxContainer.appendComponent(this.contentTextBlock);
-        this.comboBoxContainer.appendComponent(dropDownImage);
-        dropDownImage.setSource('./assets/icon/close.png');
+        this._comboBoxContainer.appendComponent(this._contentTextBlock);
+        this._comboBoxContainer.appendComponent(dropDownImage);
+        dropDownImage.source = './assets/icon/dropdown.png';
         dropDownImage.width = 20;
         dropDownImage.height = 20;
-        this.comboBoxContainer.ins.style.alignItems = 'center';
-        this.appendComponent(this.comboBoxContainer);
-        this.comboBoxContainer.onClick = ()=>{
-            var comboBoxFlyout = new StackPanel('comboBoxFlyout-'+id);
+        this._comboBoxContainer.style.alignItems = 'center';
+        this.appendComponent(this._comboBoxContainer);
+        this._comboBoxContainer.onClick = ()=>{
+            this._comboBoxFlyout = new StackPanel('comboBoxFlyout-'+id);
             if(this.items.length==0){
                 return;
             }
             else{
-                comboBoxFlyout.setSize(this.width + 'px','auto');
-                comboBoxFlyout.maxHeight = 150;
-                comboBoxFlyout.addClass('flyoutFluent');
-                comboBoxFlyout.addClass('fluentBorder');
-                comboBoxFlyout.y=this.y;
-                comboBoxFlyout.x = this.x;
-                comboBoxFlyout.addClass('verticalScrollable');
+                this._comboBoxFlyout.setSize(this.width + 'px','auto');
+                this._comboBoxFlyout.maxHeight = 150;
+                this._comboBoxFlyout.addClass('flyoutFluent', 'fluentBorder');
+                this._comboBoxFlyout.y = this.offsetY;
+                this._comboBoxFlyout.x = this.offsetX;
+                this._comboBoxFlyout.addClass('verticalScrollable');
                 for(i=0; i<this.items.length;i++){
                     var s = new StackPanel();
                     s.height = 30;
-                    s.ins.style.alignItems = 'center';
+                    s.style.alignItems = 'center';
                     s.direction = 'horizontal';
-                    s.addClass('fluentClickableNoBorder');
-                    s.addClass('comboBoxItem');
+                    s.addClass('fluentClickableNoBorder', 'comboBoxItem');
                     if(i==this.selected){
                         s.addClass('comboBoxItemActivated');
                     }
@@ -126,17 +115,26 @@ class ComboBox extends Frame{
                     var candidateTextBlock = new TextBlock(this.items[i],'item-'+i+'-'+id);
                     candidateTextBlock.margin = ['2px','','',''];
                     s.appendComponent(candidateTextBlock);
-                    comboBoxFlyout.appendComponent(s);
+                    this._comboBoxFlyout.appendComponent(s);
                     s.onClick =event=>{
                         this._selected = event.target.childNodes[1].innerHTML;
-                        this.contentTextBlock.text = this._selected;
-                        this.ins.removeChild(comboBoxFlyout.ins);
+                        this._contentTextBlock.text = this._selected;
+                        this._ins.removeChild(this._comboBoxFlyout.instance());
+                        this._flyoutShowed = false;
                     };
+
                 }
             }
-            this.appendComponent(comboBoxFlyout);
-        };
+            this.appendComponent(this._comboBoxFlyout);
 
+            this._flyoutShowed = true;
+        };
+        cancelArea.onClick = event=>{
+            if(this._flyoutShowed && this._ins.compareDocumentPosition(event.target) < 16 ){
+                this._ins.removeChild(this._comboBoxFlyout.instance());
+                this._flyoutShowed = false;
+            }
+        }
     }
     set placeHolder(text){
         if(this.selected==-1){
@@ -161,28 +159,28 @@ class ComboBox extends Frame{
         }
     }
     get content(){
-        return this.contentTextBlock.text;
+        return this._contentTextBlock.text;
     }
     set content(text){
-        this.contentTextBlock.text=text;
+        this._contentTextBlock.text=text;
     }
     addItem(itemName){
         this.items.push(itemName);
     }
     setSize(width,height){
-        this.comboBoxContainer.setSize(width,height);
+        this._comboBoxContainer.setSize(width,height);
     }
     set width(w){
-        this.comboBoxContainer.width = w;
+        this._comboBoxContainer.width = w;
     }
     get width(){
-        return this.comboBoxContainer.width
+        return this._comboBoxContainer.width
     }
     set height(h){
-        this.comboBoxContainer.height = h;
+        this._comboBoxContainer.height = h;
     }
     get height(){
-        return this.comboBoxContainer.height;
+        return this._comboBoxContainer.height;
     }
 }
 class ToggleSwitch extends StackPanel{
@@ -191,7 +189,7 @@ class ToggleSwitch extends StackPanel{
         this.direction = 'horizontal';
         this.addClass('toggleSwitchFluentOff');
         this.setSize('56px','26px');
-        this.ins.style.alignItems = 'center';
+        this.style.alignItems = 'center';
         var button = new Frame('div','switch'+id);
         button.addClass('switchFluent');
         this.appendComponent(button);
@@ -214,5 +212,75 @@ class ToggleSwitch extends StackPanel{
                 this.removeClass('toggleSwitchFluentOn');
                 break;
         }
+    }
+}
+class Slider extends StackPanel{
+    maxValue=1;
+    constructor(direction, id){
+        super(id);
+        this.style.alignItems = 'center';
+        this.addClass('sliderFluent');
+        switch(direction){
+            case 'horizontal':
+                this.direction = 'horizontal';
+                this.width = 90;
+                var leftOrbit = new Frame('div','leftOrbit-'+id);
+                leftOrbit.addClass('leftOrbitFluent');
+                var rightOrbit = new Frame('div','rightOtbit-'+id);
+                rightOrbit.addClass('rightOrbitFluent');
+                this.appendComponent(leftOrbit);
+                this.appendComponent(rightOrbit);
+                this._handle = new Frame('div', 'handle-'+id);
+                this._handle.addClass('sliderHandleFluent');
+                this.appendComponent(this._handle);
+                var handleIndicator = new Frame('div', 'handleIndicator-'+id);
+                handleIndicator.addClass('sliderHandleIndicatorFluent');
+                this._handle.appendComponent(handleIndicator);
+                this._handle.x = 14;
+                leftOrbit.width = 25;
+                this.onDrag = (a,b)=>{
+                    var t = this._handle.x + a;
+                    
+                    if(t<=-11){
+                        t = -11;
+                    }
+                    if(t>=this.width-11){
+                        t = this.width - 11;
+                    }
+                    var delta = t - this._handle.x;
+                    this._handle.x = t;
+                    leftOrbit.width += delta;
+                    rightOrbit.width -= delta;
+                    this._valueChanged();
+                };
+                break;
+            case 'vertical':
+                break;
+            default:
+                throw 'Invalid argument';
+        }
+        this.onMouseDown=()=>{
+            document.addEventListener('mouseup', ()=>{this.removeClass('sliderFluentActivated');});
+            document.addEventListener('touchend', ()=>{this.removeClass('sliderFluentActivated');});
+            this.addClass('sliderFluentActivated');
+        }
+    }
+    get value(){
+        
+        return Number((this._handle.x+11)/this.width)*this.maxValue;
+    }
+    setSize(width,height){
+        this.comboBoxContainer.setSize(width,'5px');
+    }
+    set height(h){
+        ;
+    }
+    set valueChanged(func){
+        this._valueChanged = func;
+    }
+}
+class CheckBox extends Frame{
+    constructor(){
+        throw 'Not implemented';
     }
 }

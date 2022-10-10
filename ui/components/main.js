@@ -18,95 +18,140 @@ function addNewComponentBeforeById(idOfParent,components){
 }
 class Frame{
     constructor(type,id){
-        this.ins = document.createElement(type);
-        this.ins.id = id;
-        this.ins.style.boxSizing = 'border-box';
+        this._ins = document.createElement(type);
+        this._ins.id = id;
+        this._ins.style.boxSizing = 'border-box';
     }
     instance(){
-        return this.ins;
+        return this._ins;
     }
-    addClass(className){
-        this.ins.classList.add(className);
+    addClass(){
+        for(var i = 0; i<arguments.length; i++)
+            this._ins.classList.add(arguments[i]);
     }
     removeClass(className){
-        this.ins.classList.remove(className);
+        this._ins.classList.remove(className);
     }
     set text(t){
-        this.innerText = t;
-        this.ins.innerHTML = this.innerText;
+        this._text = t;
+        this._ins.innerHTML = this._text;
     }
     get text(){
-        return this.innerText;
+        return this._Text;
     }
-    setText(t){
-        this.innerText = t;
-        this.ins.innerHTML = this.innerText;
-    }
-    appendComponent(comp){
-        addNewComponent(this.ins,comp.instance());
+    appendComponent(){
+        for(var i = 0; i<arguments.length; i++)
+            addNewComponent(this._ins,arguments[i].instance());
     }
     setSize(width,height){
-        this.ins.style.height = height;
-        this.ins.style.width = width;
-        //this.ins.style.lineHeight = this.ins.style.height;
+        this._ins.style.height = height;
+        this._ins.style.width = width;
     }
     set width(w){
-        this.ins.style.width = w + 'px';
+        this._ins.style.width = w + 'px';
     }
     get width(){
-        return this.ins.offsetWidth;
+        return this._ins.offsetWidth;
     }
     set height(h){
-        this.ins.style.height = h + 'px';
-        //this.ins.style.lineHeight = this.ins.style.height;
+        this._ins.style.height = h + 'px';
     }
     get height(){
-        return this.ins.offsetHeight;
+        return this._ins.offsetHeight;
     }
     setPos(top,left){
-        this.ins.style.top = top;
-        this.ins.style.left = left;
+        this._ins.style.top = top;
+        this._ins.style.left = left;
     }
     get x(){
-        return this.ins.offsetLeft;
+        return Number(this._ins.style.left.slice(0, -2));
     }
     set x(x){
-        this.ins.style.left = x+'px';
+        this._ins.style.left = x+'px';
+    }
+    get offsetX(){
+        return this._ins.offsetLeft;
+    }
+    get offsetY(){
+        return this._ins.offsetTop;
     }
     get y(){
-        return this.ins.offsetTop;
+        return Number(this._ins.style.top.slice(0, -2));
     }
     set y(y){
-        this.ins.style.top = y+'px';
-    }
-    set horizontalAlignment(direction){
-        switch(direction){
-            case 'left':
-                this.ins.style.float = 'left';
-                break;
-            case 'right':
-                this.ins.style.float = 'right';
-                break;
-            default:
-                throw 'invalid value';
-        }
+        this._ins.style.top = y+'px';
     }
     set margin(margin){
-        this.ins.style.marginLeft = margin[0];
-        this.ins.style.marginTop = margin[1]
-        this.ins.style.marginRight = margin[2]
-        this.ins.style.marginBottom = margin[3]
+        this._ins.style.marginLeft = margin[0];
+        this._ins.style.marginTop = margin[1]
+        this._ins.style.marginRight = margin[2]
+        this._ins.style.marginBottom = margin[3]
     }
     get margin(){
-        return [this.ins.style.marginLeft,this.ins.style.marginTop,this.ins.style.marginRight,this.ins.style.marginBottom]
+        return [this._ins.style.marginLeft,this._ins.style.marginTop,this._ins.style.marginRight,this._ins.style.marginBottom]
     }
-    set onClick(func){
-        this.ins.addEventListener('click',func);
-    }
+
     set maxHeight(mh){
-        this.ins.style.maxHeight = mh +'px';
+        this._ins.style.maxHeight = mh +'px';
     }
     set maxWidth(mw){
-        this.ins.style.maxWidth = mw + 'px';
+        this._ins.style.maxWidth = mw + 'px';
+    }
+    get style(){
+        return this._ins.style;
+    }
+    //functions
+
+    //notes: the functions will be added to the component instead of replacing the existing function.
+    set onClick(func){
+        this._ins.addEventListener('click',func);
+    }
+    set onDrag(func){
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        this._ins.addEventListener('mousedown',dragMouseDown);
+        this._ins.addEventListener('touchstart',dragTouchDown);
+        function dragMouseDown(e) {
+            e = e || window.event;
+            e.preventDefault();
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            document.onmousemove = elementDrag;
+        }
+        function dragTouchDown(e) {
+            e = e || window.event;
+            pos3 = e.touches[0].clientX;
+            pos4 = e.touches[0].clientY;
+            document.addEventListener('touchmove', elementDrag_touch);
+            document.addEventListener('touchend', closeDragElement_touch);
+        }
+        function elementDrag_touch(e) {
+            pos1 = pos3 - e.touches[0].clientX;
+            pos2 = pos4 - e.touches[0].clientY;
+            pos3 = e.touches[0].clientX;
+            pos4 = e.touches[0].clientY;
+            func(-pos1, -pos2);
+        }
+        function elementDrag(e) {
+            e = e || window.event;
+            e.preventDefault();
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            func(-pos1, -pos2);
+        }
+        function closeDragElement_touch() {
+            document.removeEventListener('touchmove', elementDrag_touch);
+            document.removeEventListener('touchend', closeDragElement_touch);
+        }
+        function closeDragElement() {
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+    }
+    set onMouseDown(func){
+        this._ins.addEventListener('mousedown',event=>{func(event)});
+        this._ins.addEventListener('touchstart',event=>{func(event)});
     }
 }
