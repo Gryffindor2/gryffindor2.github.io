@@ -1,171 +1,70 @@
 <!DOCTYPE html>
 <html lang="zh">
-<head>
-  <meta charset="UTF-8">
-  <meta name=”viewport” content=”width=device-width, initial-scale=1″ />
-  <title>photon</title>
-  <!--<script src="./dependence/jquery-3.6.1.min.js"></script>-->
-  <script src="./dependence/import.js"></script>
-  <script src="./main.js"></script>
-  <script src="./ui/menu/menu.js"></script>
-  <script src="./ui/main/layout.js"></script>
-  <script src="./webgl/kernel.js"></script>
-  <script src="./ui/toolbar/toolbar.js"></script>
-  <script src="./ui/components/main.js"></script>
-  <script src="./ui/components/window.js"></script>
-  <script src="./ui/menu/templete.js"></script>
-  <script src="./ui/components/components.js"></script>
-</head>
-<body onload="main()" onresize="resize()" id="App">
-  
-  <div id="windowContainer"></div>
-  <div id = "applicationWindow">
-    <div id="placeHolder"></div>
-    <div id="menu">
-      <div id="logo" class="unselectable">
-        logo
-      </div>
-      <div class="menuItem unselectable" id="fileMenu">
-        文件
-      </div>
-      <div class="subMenu unselectable" id="fileSubMenu">
-        <div class="subMenuItem" id="openMenu">
-          打开
-        </div>
-        <div class="subMenuItem" id="saveMenu">
-          保存
-        </div>
-        <div class="subMenuItem" id="newMenu">
-          新建
-        </div>
-        <div class="subMenuItem" id="exportMenu">
-          导出
-        </div>
-        <div class="subMenuItem" id="closeMenu">
-          关闭
-        </div>
-
-      </div>
-      <div class="menuItem unselectable" id="editMenu">
-        编辑
-      </div>
-      <div class="subMenu unselectable" id="editSubMenu">
-        <div class="subMenuItem" id="copyMenu">
-          复制
-        </div>
-        <div class="subMenuItem" id="pasteMenu">
-          粘贴
-        </div>
-        <div class="subMenuItem" id="newMenu">
-          新建&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>
-        </div>
-
-      </div>
-      <div class="subMenu unselectable" id="newSubMenu">
-        <div class="subMenuItem" id="layerMenu">
-          窗口
-        </div>
-      </div>
-      <div class="menuItem unselectable" id="viewMenu">
-        视图
-      </div>
-      <div class="subMenu unselectable" id="viewSubMenu">
-        <div class="subMenuItem" id="resetMenu">
-          重置
-        </div>
-      </div>
-      <div class="menuItem unselectable" id="filterMenu">
-        滤镜
-      </div>
-      <div class="subMenu unselectable" id="filterSubMenu">
-        <div class="subMenuItem" id="moreFilterMenu">
-          ...
-        </div>
-      </div>
-      <div class="menuItem unselectable" id="helpMenu">
-        帮助
-      </div>
-      <div class="subMenu unselectable" id="helpSubMenu">
-        <div class="subMenuItem" id="helpDocumentMenu">
-          帮助文档
-        </div>
-      </div>
-    </div>
-    <div id="workbench">
-      <div id="left" class="verticalFlexContainer">
-
-        <div id="canvasContainer">
-          <canvas id="glcanvas">
-            你的浏览器似乎不支持或者禁用了 HTML5 canvas 元素。
-          </canvas>
-        </div>
-        <div id="toolbar" class="verticalFlexContainer">
-          <div id="toolbarMoveHandle">
-          </div>
-          <div id="toolBarPlaceHolder">
-          </div>
-          <div class="horizontalFlexContainer" id="toolbarMainContainer">
-            <div id="toolSelectionPanel">
-              <div class="tool" id="selectTool">
-  
-              </div>
-              <div class="tool" id="tool2">
-  
-              </div>
-              <div class="tool" id="tool3">
-  
-              </div>
-              <div class="tool">
-  
-              </div>
-              <div class="tool">
-  
-              </div>
-              <div class="tool">
-  
-              </div>
-              <div class="tool">
-  
-              </div>
-              <div class="tool">
-  
-              </div>
-              <div class="tool">
-  
-              </div>
-              <div class="tool">
-  
-              </div>
-              <div class="tool">
-  
-              </div>
+    <head>
+        <meta charset="UTF-8" />
+        <title>photon</title>
+        <script src="./dependence/import.js"></script>
+        <script src="./ui/components/frame.js"></script>
+        <script src="./ui/components/components.js"></script>
+        <script src="./ui/windows/newProjectWindow.js"></script>
+        <script src="./ui/windows/messageBox.js"></script>
+        <script src="./ui/windows/menu.js"></script>
+        <script src="./main.js"></script>
+        <script src="./ui/main/layout.js"></script>
+        <script src="./webgl/kernel.js"></script>
+        <script src="./ui/toolbar/toolbar.js"></script>
+    </head>
+    <body onload="main()" onresize="resize()" id="App">
+        <div id="windowContainer"></div>
+        <div id="applicationWindow">
+            <div id="placeHolder"></div>
+            <div id="menu">
+                <div id="logo" class="unselectable">logo</div>
             </div>
-            <div id="toolSettings">
-      
+            <div id="workbench">
+                <div id="left" class="verticalFlexContainer">
+                    <div id="canvasContainer">
+                        <canvas id="glcanvas">
+                            你的浏览器似乎不支持或者禁用了 HTML5 canvas 元素。
+                        </canvas>
+                    </div>
+                    <div id="toolbar" class="verticalFlexContainer">
+                        <div id="toolbarMoveHandle"></div>
+                        <div id="toolBarPlaceHolder"></div>
+                        <div
+                            class="horizontalFlexContainer"
+                            id="toolbarMainContainer"
+                        >
+                            <div id="toolSelectionPanel">
+                                <div class="tool" id="selectTool"></div>
+                                <div class="tool" id="tool2"></div>
+                                <div class="tool" id="tool3"></div>
+                                <div class="tool"></div>
+                                <div class="tool"></div>
+                                <div class="tool"></div>
+                                <div class="tool"></div>
+                                <div class="tool"></div>
+                                <div class="tool"></div>
+                                <div class="tool"></div>
+                                <div class="tool"></div>
+                            </div>
+                            <div id="toolSettings"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="resizableContainer">
+                    <div id="horizontalSperator"></div>
+                    <div id="rightSidebar">
+                        <div id="attributePanel" class="panel"></div>
+                        <div id="seperator">
+                            <div class="dragBar"></div>
+                            <div class="dragBar"></div>
+                        </div>
+                        <div id="layerPanel" class="panel"></div>
+                    </div>
+                </div>
             </div>
-          </div>
+            <div id="footer" class="unselectable">23MB</div>
         </div>
-      </div>
-      <div id="resizableContainer">
-        <div id="horizontalSperator"></div>
-        <div id="rightSidebar">
-          <div id="attributePanel" class="panel">
-      
-          </div>
-          <div id="seperator">
-            <div class="dragBar"></div>
-            <div class="dragBar"></div>
-          </div>
-          <div id="layerPanel" class="panel">
-        
-          </div>
-        </div>
-    </div>
-    </div>
-    <div id="footer" class="unselectable">
-      23MB
-    </div>
-  </div>
-
-</body>
+    </body>
 </html>

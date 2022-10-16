@@ -1,40 +1,44 @@
-.fluentClickableNoBorder:active{
+.fluentClickableNoBorder:active {
     color: #5d5d5d;
 }
-.fluentClickable{
+.fluentClickable {
     border-bottom: 0.7px solid #c3c5c6;
-    color: #5d5d5d;
+    color: #000000;
 }
-.fluentClickable:hover, .fluentClickableNoBorder:hover{
+.fluentClickable:hover,
+.fluentClickableNoBorder:hover {
     background-color: #e7e9eb;
 }
-.fluentBorder{
+.fluentBorder {
     border-radius: 5px;
     border: 0.7px solid #c3c5c6;
     border-bottom: #868686 solid 1.4px;
 }
-.horizontalScrollable{
+.fluentFilled {
+    flex: 1;
+}
+.horizontalScrollable {
     overflow-x: scroll;
 }
-.verticalScrollable{
+.verticalScrollable {
     overflow-y: scroll;
 }
 /*button*/
-.buttonFluent{
-   background-color: #f8f9f9;
-   border-radius: 5px;
-   border: 0.7px solid #c3c5c6;
-   border-bottom: #868686 solid 1.4px;
+.buttonFluent {
+    background-color: #f8f9f9;
+    border-radius: 5px;
+    border: 0.7px solid #c3c5c6;
+    border-bottom: #868686 solid 1.4px;
 }
-.buttonFluent:hover{
+.buttonFluent:hover {
     background-color: #e7e9eb;
 }
-.buttonFluent:active{
+.buttonFluent:active {
     border-bottom: 0.7px solid #c3c5c6;
     color: #5d5d5d;
 }
 /*window*/
-.window{
+.window {
     position: absolute;
     z-index: 5;
     border-radius: 9px;
@@ -43,43 +47,43 @@
     border: #bebebe solid 0.5px;
     overflow: hidden;
 }
-.titleBar{
+.titleBar {
     width: 100%;
     height: 40px;
     background-color: #f3f3f3;
 }
-.title{
-    flex:1;
+.title {
+    flex: 1;
     height: 100%;
     line-height: 40px;
     margin-left: 5px;
 }
-.closeBG{
+.closeBG {
     height: 100%;
     width: 40px;
 }
-.close{
-    width:100%;
+.close {
+    width: 100%;
     height: 100%;
 }
-.closeBG:hover{
+.closeBG:hover {
     background-color: red;
 }
-.close:hover{
+.close:hover {
     filter: invert(100%);
 }
-.bot{
+.bot {
     width: 100%;
     height: 3px;
     background-color: white;
     cursor: n-resize;
     bottom: 0px;
 }
-.mainWindow{
+.mainWindow {
     width: 100%;
     flex: 1;
 }
-#placeHolder{
+#placeHolder {
     background-color: white;
     opacity: 0.4;
     width: 100%;
@@ -89,67 +93,66 @@
     display: none;
 }
 /*textbox*/
-.textBox{
+.textBox {
     background-color: #f8f9f9;
-    outline-style: none ;
-    border: 1px solid #ccc; 
+    outline-style: none;
+    border: 1px solid #ccc;
     border-bottom: #868686 solid 1.4px;
     border-radius: 3px;
 }
-.textBox:focus{
+.textBox:focus {
     background-color: white;
     border-bottom: #0067c0 solid 2px;
     outline: 0;
     transition: 0.1s;
 }
-.unactivatedTextBox:hover{
+.unactivatedTextBox:hover {
     background-color: #f0f1f2;
 }
 /*textBlock*/
-.textBlockFluent{
+.textBlockFluent {
     margin: 0px;
 }
 /*comboBox*/
-.comboBoxFluent{
+.comboBoxFluent {
     background-color: #f9f9f9;
 }
-.comboBoxFluent p{
-    flex:1;
+.comboBoxFluent p {
+    flex: 1;
 }
-.comboBoxFluent .dropDownImage{
+.comboBoxFluent .dropDownImage {
     width: 90px;
     top: 30px;
 }
-.comboBoxItem{
+.comboBoxItem {
     width: calc(100%-6px);
     border-radius: 5px;
 }
-.comboBoxIndicator{
+.comboBoxIndicator {
     height: 15px;
     width: 3px;
     border-radius: 1.5px;
-
 }
-.comboBoxItemActivated{
+.comboBoxItemActivated {
     background-color: #efefef;
 }
-.comboBoxItemActivated .comboBoxIndicator{
+.comboBoxItemActivated .comboBoxIndicator {
     background-color: #0067c0;
 }
 /*flyout*/
-.flyoutFluent{
+.flyoutFluent {
     position: absolute;
     background-color: #f9f9f9;
 }
 /*toggleSwitch*/
-.toggleSwitchFluentOff{
+.toggleSwitchFluentOff {
     background-color: #f3f3f3;
     border-radius: 13px;
     border: #868686 solid 0.5px;
     flex-direction: row;
     transition: 0.4s;
 }
-.toggleSwitchFluentOff .switchFluent{
+.toggleSwitchFluentOff .switchFluent {
     width: 18px;
     height: 18px;
     background-color: #868686;
@@ -158,7 +161,7 @@
     margin-right: 4px;
     transition: 0.1s linear;
 }
-.toggleSwitchFluentOff:hover .switchFluent{
+.toggleSwitchFluentOff:hover .switchFluent {
     width: 20px;
     height: 20px;
     background-color: #868686;
@@ -167,13 +170,13 @@
     margin-right: 3px;
     transition: 0.1s linear;
 }
-.toggleSwitchFluentOn{
+.toggleSwitchFluentOn {
     background-color: #006fc0;
     flex-direction: row-reverse;
     border-radius: 13px;
     transition: 0.4s;
 }
-.toggleSwitchFluentOn .switchFluent{
+.toggleSwitchFluentOn .switchFluent {
     width: 18px;
     height: 18px;
     background-color: #fff;
@@ -182,7 +185,7 @@
     margin-right: 4px;
     transition: 0.1s linear;
 }
-.toggleSwitchFluentOn:hover .switchFluent{
+.toggleSwitchFluentOn:hover .switchFluent {
     width: 20px;
     height: 20px;
     background-color: #fff;
@@ -192,32 +195,32 @@
     transition: 0.1s linear;
 }
 /*slider*/
-.sliderFluent{
+.sliderFluent {
     position: relative;
 }
-.leftOrbitFluent{
+.leftOrbitFluent {
     background-color: #006fc0;
     height: 8px;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
     width: 20px;
 }
-.rightOrbitFluent{
+.rightOrbitFluent {
     background-color: #868686;
     height: 8px;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
     flex: 1;
 }
-.sliderHandleFluent{
+.sliderHandleFluent {
     position: absolute;
     width: 22px;
     height: 22px;
     border-radius: 11px;
     background-color: white;
-    border: 1px #cdcdcd solid ;
+    border: 1px #cdcdcd solid;
 }
-.sliderHandleIndicatorFluent{
+.sliderHandleIndicatorFluent {
     position: absolute;
     left: 4px;
     top: 4px;
@@ -227,7 +230,7 @@
     background-color: #006fc0;
     transition: 0.1s;
 }
-.sliderHandleIndicatorFluent:hover{
+.sliderHandleIndicatorFluent:hover {
     position: absolute;
     left: 3px;
     top: 3px;
@@ -237,7 +240,7 @@
     background-color: #006fc0;
     transition: 0.1s;
 }
-.sliderFluentActivated .sliderHandleIndicatorFluent{
+.sliderFluentActivated .sliderHandleIndicatorFluent {
     position: absolute;
     left: 6px;
     top: 6px;
@@ -246,4 +249,92 @@
     border-radius: 4px;
     background-color: #006fc0;
     transition: 0.1s;
+}
+/*checkBox*/
+.checkBoxFluent {
+    border-radius: 5px;
+    width: 20px;
+    height: 20px;
+}
+.checkBoxFluentChecked {
+    background-color: #0067c0;
+    border: none;
+}
+.checkBoxFluentUnchecked {
+    background-color: #ededed;
+    border: 1.5px solid #868686;
+}
+.checkBoxFluentChecked img {
+    display: block;
+    transform: 0.2s;
+}
+.checkBoxFluentUnchecked img {
+    display: none;
+    transform: 0.2s;
+}
+.checkBoxCheckedImageFluent {
+    height: 20px;
+    width: 20px;
+}
+.checkBoxFluentUnchecked:hover {
+    background-color: #e5e5e5;
+    transform: 0.2s;
+}
+.checkBoxFluentChecked:hover {
+    background-color: #1975c5;
+    transform: 0.2s;
+}
+/*card*/
+.cardFluent {
+    min-width: 100px;
+    min-height: 100px;
+    padding: 1px;
+    border: 1px solid #b1b1b1;
+    border-radius: 5px;
+}
+.cardFluentFocused {
+    padding: 0px;
+    border: 2px solid #0067c0;
+    background-color: #e5e5e5;
+}
+.cardFluent:hover {
+    background-color: #e5e5e5;
+}
+/*cardView*/
+.cardViewFluent {
+    border-radius: 8px;
+    border: 2px solid #e5e5e5;
+    padding: 5px;
+    background-color: #f3f3f3;
+}
+/*menu*/
+.menuItem {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    height: 30px;
+    line-height: 30px;
+}
+.subMenu {
+    top: 41px;
+    position: absolute;
+    background-color: #e8e8e8;
+    border-radius: 7px;
+    margin: 0px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    width: 120px;
+    max-height: 80vh;
+    overflow-y: auto;
+    display: none;
+    border-color: #c0c0c0;
+    border-style: solid;
+}
+.subMenuItem {
+    height: 35px;
+    line-height: 35px;
+    padding-left: 10px;
 }

@@ -7,12 +7,11 @@ $using('./ui/components/main.js');
 $using('./ui/components/window/window.js')
 $using('./ui/menu/templete.js');
 $using('./ui/components/components.js');*/
-$resourceDictionary('./ui/main/style.css');
-$resourceDictionary('./ui/menu/menu.css');
-$resourceDictionary('./ui/toolbar/toolbar.css');
-$resourceDictionary('./ui/main/public.css');
-$resourceDictionary('./ui/scrollBar/scrollbar.css');
-$resourceDictionary('./ui/components/fluent.css');
+$resourceDictionary("./ui/main/style.css");
+$resourceDictionary("./ui/toolbar/toolbar.css");
+$resourceDictionary("./ui/main/public.css");
+$resourceDictionary("./ui/scrollBar/scrollbar.css");
+$resourceDictionary("./ui/components/fluent.css");
 /*async function $using(path){
     
     var head = document.getElementsByTagName('head')[0];
@@ -30,11 +29,11 @@ $resourceDictionary('./ui/components/fluent.css');
 }*/
 //temporarily abandoned
 //f**k u javascript
-function $resourceDictionary(path){
-    var head = document.getElementsByTagName('head')[0];
-    var link = document.createElement('link');
+function $resourceDictionary(path) {
+    var head = document.getElementsByTagName("head")[0];
+    var link = document.createElement("link");
     link.href = path;
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
+    link.rel = "stylesheet";
+    link.type = "text/css";
     head.appendChild(link);
 }

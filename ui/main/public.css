@@ -1,12 +1,12 @@
-.unselectable{
+.unselectable {
     user-select: none;
-    -webkit-user-select:none;
+    -webkit-user-select: none;
 }
-.horizontalFlexContainer{
+.horizontalFlexContainer {
     display: flex;
     flex-flow: row;
 }
-.verticalFlexContainer{
+.verticalFlexContainer {
     display: flex;
     flex-flow: column;
 }
