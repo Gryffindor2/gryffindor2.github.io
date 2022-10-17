@@ -691,3 +691,13 @@ class MenuItem extends StackPanel {
         this._subMenu.y = y;
     }
 }
+class CanvasFluent extends Frame{
+    constructor(id){
+        super('canvas',id);
+        this.text = '你的浏览器似乎不支持或者禁用了 HTML5 canvas 元素。';
+        this._glContext =  gl_init(this._ins);
+    }
+    get glContext(){
+        return this._glContext;
+    }
+}

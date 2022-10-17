@@ -1,12 +1,3 @@
-#canvasContainer {
-    position: absolute;
-    z-index: 0;
-}
-#glcanvas {
-    height: 400px;
-    width: 400px;
-    background: #fff;
-}
 #toolbarMoveHandle {
     height: 10px;
     width: 120px;

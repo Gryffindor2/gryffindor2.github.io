@@ -7,13 +7,12 @@ $using('./ui/components/main.js');
 $using('./ui/components/window/window.js')
 $using('./ui/menu/templete.js');
 $using('./ui/components/components.js');*/
-$resourceDictionary("./ui/main/style.css");
+$resourceDictionary("./layout.css");
 $resourceDictionary("./ui/toolbar/toolbar.css");
-$resourceDictionary("./ui/main/public.css");
-$resourceDictionary("./ui/scrollBar/scrollbar.css");
+$resourceDictionary("./ui/public.css");
 $resourceDictionary("./ui/components/fluent.css");
 /*async function $using(path){
-    
+
     var head = document.getElementsByTagName('head')[0];
     var  script = document.createElement("script");
     head.appendChild(script);

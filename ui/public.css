@@ -1,3 +1,15 @@
+.unselectable {
+    user-select: none;
+    -webkit-user-select: none;
+}
+.horizontalFlexContainer {
+    display: flex;
+    flex-flow: row;
+}
+.verticalFlexContainer {
+    display: flex;
+    flex-flow: column;
+}
 ::-webkit-scrollbar {
     height: 5px;
     width: 5px;

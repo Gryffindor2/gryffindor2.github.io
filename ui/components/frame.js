@@ -29,8 +29,16 @@ document.addEventListener('click', (event) => {
     }
 });
 class Frame {
+    static bind(id){
+        return new Frame(null,id);
+    }
     constructor(type, id) {
-        this._ins = document.createElement(type);
+        if(type == null){
+            this._ins = instanceOf(id);
+        }
+        else{
+            this._ins = document.createElement(type);
+        }
         this._ins.id = id;
         this._id = id;
         this._ins.style.boxSizing = 'border-box';
@@ -167,13 +175,35 @@ class Frame {
             pos3 = e.clientX;
             pos4 = e.clientY;
             document.onmouseup = closeDragElement;
-            document.onmousemove = elementDrag;
+            document.onmousemove = e=>{
+                if(this.timeStamp!=null){
+                    return;
+                }
+                else{
+                    this._timeStamp = setTimeout(() => {
+                        elementDrag(e);
+                        this._timeStamp = null;
+                    }, 7);
+                }
+                
+            };
         }
         function dragTouchDown(e) {
             e = e || window.event;
             pos3 = e.touches[0].clientX;
             pos4 = e.touches[0].clientY;
-            document.addEventListener('touchmove', elementDrag_touch);
+            document.addEventListener('touchmove', e=>{
+                if(this._timeStamp!=null){
+                    return;
+                }
+                else{
+                    this._timeStamp = setTimeout(() => {
+                        elementDrag_touch(e);
+                        this._timeStamp = null;
+                    }, 7);
+                }
+                
+            });
             document.addEventListener('touchend', closeDragElement_touch);
         }
         function elementDrag_touch(e) {

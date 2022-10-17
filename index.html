@@ -14,7 +14,7 @@
         <script src="./webgl/kernel.js"></script>
         <script src="./ui/toolbar/toolbar.js"></script>
     </head>
-    <body onload="main()" onresize="resize()" id="App">
+    <body onload="main()" onresize="initLayout()" id="App">
         <div id="windowContainer"></div>
         <div id="applicationWindow">
             <div id="placeHolder"></div>
@@ -23,11 +23,6 @@
             </div>
             <div id="workbench">
                 <div id="left" class="verticalFlexContainer">
-                    <div id="canvasContainer">
-                        <canvas id="glcanvas">
-                            你的浏览器似乎不支持或者禁用了 HTML5 canvas 元素。
-                        </canvas>
-                    </div>
                     <div id="toolbar" class="verticalFlexContainer">
                         <div id="toolbarMoveHandle"></div>
                         <div id="toolBarPlaceHolder"></div>

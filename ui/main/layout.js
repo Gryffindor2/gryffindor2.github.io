@@ -1,6 +1,3 @@
-function endisableDrag(handle) {
-    handle.onmousedown = null;
-}
 function enableResizeVertical(top, bottom, handle) {
     var originY = 0,
         deltaY = 0;
@@ -133,65 +130,5 @@ function enableResizeHorizontal(left, right, handle, minLeft, maxRight) {
         // 释放鼠标按钮时停止移动:
         document.ontouchend = null;
         document.ontouchmove = null;
-    }
-}
-function enableDrag(elmnt, handle) {
-    //elemnt is the object to move
-    var pos1 = 0,
-        pos2 = 0,
-        pos3 = 0,
-        pos4 = 0;
-    handle.onmousedown = dragMouseDown;
-    handle.addEventListener("touchstart", dragTouchDown);
-    function dragMouseDown(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // 在启动时获取鼠标光标位置:
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        document.onmouseup = closeDragElement;
-        document.ontouchup = closeDragElement;
-        // 每当光标移动时调用一个函数:
-        document.onmousemove = elementDrag;
-    }
-    function dragTouchDown(e) {
-        e = e || window.event;
-        //e.preventDefault();
-        pos3 = e.touches[0].clientX;
-        pos4 = e.touches[0].clientY;
-        document.ontouchend = closeDragElement_touch;
-        document.ontouchmove = elementDrag_touch;
-    }
-    function elementDrag_touch(e) {
-        pos1 = pos3 - e.touches[0].clientX;
-        pos2 = pos4 - e.touches[0].clientY;
-        pos3 = e.touches[0].clientX;
-        pos4 = e.touches[0].clientY;
-        elmnt.style.top = Number(elmnt.style.top.slice(0, -2)) - pos2 + "px";
-        elmnt.style.left = Number(elmnt.style.left.slice(0, -2)) - pos1 + "px";
-    }
-
-    function closeDragElement_touch() {
-        // 释放鼠标按钮时停止移动:
-        document.ontouchend = null;
-        document.ontouchmove = null;
-    }
-    function elementDrag(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // 计算新的光标位置:
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        // 设置元素的新位置:
-        elmnt.style.top = Number(elmnt.style.top.slice(0, -2)) - pos2 + "px";
-        elmnt.style.left = Number(elmnt.style.left.slice(0, -2)) - pos1 + "px";
-    }
-
-    function closeDragElement() {
-        // 释放鼠标按钮时停止移动:
-        document.onmouseup = null;
-        document.onmousemove = null;
     }
 }
